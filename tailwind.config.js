@@ -1,18 +1,36 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+    darkMode: "class",
+
+    content: [
+        "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+        "./components/**/*.{js,ts,jsx,tsx,mdx}",
+        "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    theme: {
+        colors: {
+            primary: "#ffffff",
+            secondary: "#2b2b2b ",
+            gray: "rgba(0,0,0,.5)",
+            green: "#03a87c",
+            greenbg: "rgba(3, 168, 124, 0.11)",
+        },
+        fontFamily: {
+            blog: ["Merriweather"],
+            sans: ["Segoe UI", "Roboto", "Helvetica Neue", "Noto Sans"],
+            header: ["lora", "serif"],
+            dm: ["DM Serif Text"],
+            cursive: "Cedarville-Cursive",
+        },
+        fontSize: {
+            blog: "1.16rem",
+            cardtitle: "2rem",
+            cardforeword: "1.24em",
+            verticletitle: "1.5em",
+            verticleforeword: "1rem",
+            horiztitle: "1.1em",
+            horizforeword: "1rem",
+            author: "85%",
+        },
     },
-  },
-  plugins: [require("daisyui")],
-}
+};

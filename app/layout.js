@@ -1,7 +1,8 @@
-import { Open_Sans } from "next/font/google";
+import Menu from "@components/Home/Menu";
 import "./globals.css";
-
-const opensan = Open_Sans({ subsets: ["latin"] });
+import { SlArrowUp } from "react-icons/sl";
+import MenuNavBar from "@components/Home/Menu";
+import Search from "@components/Home/Search";
 
 export const metadata = {
     title: "Nguyen Minh Phong",
@@ -10,97 +11,55 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html className="bg-[#F9F7F7]" lang="en">
-            <body className={`${opensan.className} antialiased`}>
-                <header className="sticky top-0 bg-[#F9F7F7] flex justify-between sm:justify-center items-center">
-                    <a href="/">
-                        <img src="logo.svg" className=" h-[3rem] m-5" />
-                    </a>
-                    <div className="sm:hidden dropdown dropdown-bottom dropdown-end">
-                        <label tabIndex={0} className="m-1">
-                            <img
-                                src="hamburger.svg"
-                                className="w-[5rem] mr-2"
-                            />
-                        </label>
-                        <ul
-                            tabIndex={0}
-                            className="dropdown-content text-white bg-[#1B0042] z-[1] menu shadow  rounded-box w-52"
-                        >
-                            <li>
-                                <a>New</a>
-                            </li>
-
-                            <li>
-                                <a>Reading list</a>
-                            </li>
-                            <li>
-                                <a>Topics</a>
-                            </li>
-                            <li>
-                                <div className="form-control">
-                                    <input
-                                        type="text"
-                                        placeholder="Search"
-                                        className="input input-bordered  w-[100%]"
-                                    />
-                                </div>
-                            </li>
-                            <li>
-                                <a className="text-black bg-[#F9F871]">
-                                    Buy me a coffee{" "}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div
-                        id="header_link"
-                        className="hidden flex-1 sm:flex items-center justify-start font-semibold"
-                    >
-                        <a href="#" className="bg-[#FF5480] text-white">
-                            Popular
-                        </a>
-                        <a>New</a>
-                        <a>Reading list</a>
-                        <a>Topics</a>
-                        <a className="bg-[#F9F871]">
-                            <img
-                                src="coffee.svg"
-                                className="h-[1rem] inline "
-                            />{" "}
-                            Buy me a coffee{" "}
-                        </a>
-                    </div>
-                    <div className="hidden sm:flex justify-end items-center ml-10 ">
-                        <img className="max-w-[2rem]" src="search.svg" />
+        <html>
+            <body className="bg-primary text-secondary font-sans antialiased transition-all">
+                <a className="hidden sm:block rounded-full w-[50px] h-[50px] text-center leading-[45px] bg-primary fixed right-[40px] bottom-[100px] text-[25px] text-[#999] ">
+                    <i>
+                        <SlArrowUp />
+                    </i>
+                </a>
+                <header className="max-w-[90vw]  sm:max-w-[80vw]  m-auto ">
+                    <div className="flex justify-between pt-4">
+                        <div className="font-dm text-[2em] font-semibold">
+                            MPhong
+                        </div>
+                        <div className="hidden sm:flex  items-center gap-3">
+                            <Search />
+                            <button
+                                type="button"
+                                className="text-gray border-[1px]  font-medium rounded-lg text-sm py-[0.3rem] px-[0.7rem]"
+                            >
+                                Contact
+                            </button>
+                        </div>
+                        <div className="sm:hidden block ">
+                            <MenuNavBar />
+                        </div>
                     </div>
                 </header>
-                <section>{children}</section>
-                <div className="divider"></div>
-                <footer className=" flex justify-between items-start">
-                    <img
-                        className="h-[2rem] hidden sm:inline "
-                        src="logo.svg"
-                    />
-                    <div id="social_media" className=" sm:flex hidden">
-                        <a>
-                            <img src="zalo.svg" />
-                        </a>
-                        <a>
-                            <img src="facebook.svg" />
-                        </a>
-                        <a>
-                            <img src="website.svg" />
-                        </a>
-                        <a>
-                            <img src="github.svg" />
-                        </a>
+                <nav className="sm:block hidden sm:sticky sm:top-0 max-w-[90vw]  sm:max-w-[80vw] bg-primary z-10  m-auto py-4 shadow-[0_1px_0px_0px_rgba(0, 0, 0, 0.05)]">
+                    <ul className="flex justify-between text-gray text-[0.97em] uppercase items-center ">
+                        <li>Home</li>
+                        <li>Topics</li>
+                        <li>Reading Lists</li>
+                        <li>Write a post</li>
+                    </ul>
+                </nav>
+                <div className="max-w-[90vw] mt-3 sm:max-w-[80vw] m-auto">
+                    {children}
+                </div>
+
+                <footer className="bg-white rounded-lg shadow m-4">
+                    <div className="w-full max-w-screen-xl mx-auto p-3 md:py-4">
+                        <hr className="my-5 border-gray sm:mx-auto  " />
+                        <span className="block text-sm text-gray sm:text-center ">
+                            © 2023{" "}
+                            <a href="#" className="hover:underline">
+                                Minh phong
+                            </a>
+                            . All Rights Reserved.
+                        </span>
                     </div>
-                    <h3 className="">
-                        Made with{" "}
-                        <img className="h-[1rem] inline" src="heart.svg" /> by
-                        Phong
-                    </h3>
                 </footer>
             </body>
         </html>
