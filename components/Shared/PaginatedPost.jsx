@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import Pagination from './Pagination';
 import HorizonPost from '@components/Post/HorizonPost';
 import VerticalPost from '@components/Post/VerticalPost';
-import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
 
 
 function PaginatedPost({ anchor, link }) {

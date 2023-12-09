@@ -10,14 +10,14 @@ export default async function Home() {
     });
     let post = await res.json();
     return (
-        <div>
+        <div className="max-w-[90vw] sm:max-w-[80vw] m-auto">
             <div className="flex flex-col gap-8 sm:grid grid-cols-3">
                 <div className="col-span-3">
                     <Heading posts={post} />
                 </div>
                 <div className="col-span-2">
                     <AllStories />
-                    <Topic/>
+                    <Topic />
                     <RList />
                 </div>
                 <div className="sm:sticky sm:top-[4rem] self-start">

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 function Hero({ post }) {
@@ -10,9 +11,11 @@ function Hero({ post }) {
                 </span>
                 <p className='my-1 text-secondary font-bold text-cardtitle break-words sm:text-[3em]'>{post.title}</p>
                 <p className='text-gray text-cardforeword'> {post.foreword}</p>
-                <button className='bg-secondary border-dark  border rounded-md inline-flex items-center justify-center py-2 px-3 text-center text-primary font-medium text-white hover:px-5 duration-700  my-6'>
-                    Read more
-                </button>
+                <Link href={`/post/${post.id}`}>
+                    <button className='bg-secondary border-dark  border rounded-md inline-flex items-center justify-center py-2 px-3 text-center text-primary font-medium text-white hover:px-5 duration-700  my-6'>
+                        Read more
+                    </button>
+                </Link>
             </div>
         </div>
     )

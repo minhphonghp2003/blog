@@ -27,7 +27,7 @@ function MenuNavBar() {
                     <div className="py-1">
                         <Menu.Item>
                             <a
-                                href="#"
+                                href="/#topic"
                                 className="text-gray block px-4 py-2 text-sm"
                             >
                                 Topics
@@ -35,7 +35,7 @@ function MenuNavBar() {
                         </Menu.Item>
                         <Menu.Item>
                             <a
-                                href="#"
+                                href="/#rlist"
                                 className="text-gray block px-4 py-2 text-sm"
                             >
                                 Reading Lists
