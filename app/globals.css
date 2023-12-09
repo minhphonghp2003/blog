@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  --scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
+
+}
+
 @font-face {
   font-family: 'DmSerifText';
   src: url('/DMSerifText-Regular.ttf') format('truetype');
@@ -12,6 +18,7 @@
 *::-webkit-scrollbar {
   width: 8px;
 }
+
 
 *::-webkit-scrollbar-track {
   background: inherit;

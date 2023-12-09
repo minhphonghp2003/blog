@@ -1,11 +1,11 @@
 import React from 'react'
 
-function HorizonPost({className, post, isForeword }) {
+function HorizonPost({ className, post, isForeword, isBigTitle }) {
   return (
-    <div className={`flex gap-4 ${className} mb-2`}>
-      <img className='mb-4 max-w-[30%]' src={post.image} />
-      <div className='grow-5'>
-        <p className='font-bold mb-1 text-horiztitle'>{post.title}</p>
+    <div className={`rounded-md hover:shadow-xl duration-500 flex  gap-4 ${isBigTitle ? "text-horizbigtitle" : "text-horiztitle"}  mb-4 ${className}`}>
+      <img className=' max-w-[25%] max-h-[25%] rounded-lg object-cover' src={post.image} />
+      <div className='grow-5 '>
+        <p className=' font-bold mb-1 '>{post.title}</p>
         {
           isForeword && <p className='text-gray text-horizforeword'>{post.foreword}...</p>
         }

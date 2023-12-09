@@ -13,17 +13,17 @@ export default function RootLayout({ children }) {
     return (
         <html>
             <body className="bg-primary text-secondary font-sans antialiased transition-all">
-                <a className="hidden sm:block rounded-full w-[50px] h-[50px] text-center leading-[45px] bg-primary fixed right-[40px] bottom-[100px] text-[25px] text-[#999] ">
+                <a href="#header" className="hidden sm:block rounded-full w-[50px] h-[50px] text-center leading-[45px] bg-primary fixed right-[40px] bottom-[100px] text-[25px] text-[#999] ">
                     <i>
                         <SlArrowUp />
                     </i>
                 </a>
-                <header className="max-w-[90vw]  sm:max-w-[80vw]  m-auto ">
+                <header id="header" className="max-w-[90vw]  sm:max-w-[80vw]  m-auto ">
                     <div className="flex justify-between pt-4">
                         <div className="font-dm text-[2em] font-semibold">
                             MPhong
                         </div>
-                        <div className="hidden sm:flex  items-center gap-3">
+                        <div className="hidden sm:flex z-20  items-center gap-3">
                             <Search />
                             <button
                                 type="button"
@@ -40,8 +40,8 @@ export default function RootLayout({ children }) {
                 <nav className="sm:block hidden sm:sticky sm:top-0 max-w-[90vw]  sm:max-w-[80vw] bg-primary z-10  m-auto py-4 shadow-[0_1px_0px_0px_rgba(0, 0, 0, 0.05)]">
                     <ul className="flex justify-between text-gray text-[0.97em] uppercase items-center ">
                         <li>Home</li>
-                        <li>Topics</li>
-                        <li>Reading Lists</li>
+                        <a href="#topic">Topics</a>
+                        <a href="#rlist">Reading Lists</a>
                         <li>Write a post</li>
                     </ul>
                 </nav>

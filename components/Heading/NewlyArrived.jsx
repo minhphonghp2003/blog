@@ -12,7 +12,7 @@ function NewlyArrived({ posts }) {
                 <HorizonPost post={post3} />
                 <HorizonPost post={post4} />
             </div>
-            <VerticalPost className="col-span-2" post={post5} />
+            <VerticalPost className="col-span-2 self-start" post={post5} />
         </div>
     )
 }

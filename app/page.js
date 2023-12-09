@@ -11,17 +11,17 @@ export default async function Home() {
     let post = await res.json();
     return (
         <div>
-            <div className="flex flex-col sm:grid grid-cols-3">
+            <div className="flex flex-col gap-8 sm:grid grid-cols-3">
                 <div className="col-span-3">
                     <Heading posts={post} />
                 </div>
                 <div className="col-span-2">
                     <AllStories />
-                    <Topic />
+                    <Topic/>
                     <RList />
                 </div>
                 <div className="sm:sticky sm:top-[4rem] self-start">
-                    <Popular />
+                    <Popular posts={post} />
                 </div>
             </div>
         </div>
