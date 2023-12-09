@@ -1,4 +1,5 @@
 "use client"
+import { motion } from "framer-motion"
 import React, { useEffect, useState } from 'react'
 import TopicComp from './TopicComp'
 import DividerTitle from '@components/Shared/Divider'
@@ -27,20 +28,21 @@ function Topic() {
   useEffect(() => {
     fetchTopics()
   }, [currentPage])
-
+  
   return (
     <div className=''>
-      <DividerTitle title="All Topics " />
-      <div id='topic' className='grid sm:grid-cols-2 grid-cols-1 gap-4'>
-        {
-         topics&& topics.map(topic => {
-            return <TopicComp key={topic.name} topic={topic} />
-          })
-        }
-      </div>
-      <div className='mt-8 flex justify-center'>
-        <Pagination currentPage={currentPage} pageSize={pageSize} siblingCount={siblingCount} totalCount={totalCount} onPageChange={setCurrentPage} />
-      </div>
+      
+        <DividerTitle title="All Topics " />
+        <div id='topic' className='grid sm:grid-cols-2 grid-cols-1 gap-4'>
+          {
+            topics && topics.map(topic => {
+              return <TopicComp key={topic.name} topic={topic} />
+            })
+          }
+        </div>
+        <div className='mt-8 flex justify-center'>
+          <Pagination currentPage={currentPage} pageSize={pageSize} siblingCount={siblingCount} totalCount={totalCount} onPageChange={setCurrentPage} />
+        </div>
     </div>
   )
 }

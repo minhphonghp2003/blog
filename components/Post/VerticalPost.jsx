@@ -2,7 +2,7 @@ import React from 'react'
 
 function VerticalPost({ className, post, isForeword }) {
   return (
-    <div className={`${className} mb-4 hover:shadow-xl duration-500 rounded-md`}>
+    <div className={`${className} mb-4  rounded-md`}>
       <img className='rounded-lg mb-3 object-cover' src={post.image} />
       <p className='font-bold mb-2 text-verticletitle'> {post.title}</p>
       {

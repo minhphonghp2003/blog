@@ -2,7 +2,7 @@ import React from 'react'
 
 function HorizonPost({ className, post, isForeword, isBigTitle }) {
   return (
-    <div className={`rounded-md hover:shadow-xl duration-500 flex  gap-4 ${isBigTitle ? "text-horizbigtitle" : "text-horiztitle"}  mb-4 ${className}`}>
+    <div className={` p-2 rounded-md hover:shadow-xl duration-500 flex  gap-4 ${isBigTitle ? "text-horizbigtitle" : "text-horiztitle"}  mb-4 ${className}`}>
       <img className=' max-w-[25%] max-h-[25%] rounded-lg object-cover' src={post.image} />
       <div className='grow-5 '>
         <p className=' font-bold mb-1 '>{post.title}</p>
