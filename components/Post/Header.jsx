@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 function Header({ post }) {
@@ -7,10 +8,11 @@ function Header({ post }) {
             <div className=' flex gap-4 '>
                 <img className='h-[40px] w-[40px] rounded-full ' src={post.authorImage} />
                 <div className='text-author text-gray'>
-                    <p>
-                        <span className='text-secondary'>{post.authorName}</span> in{" "}
-                        <span className='text-green'> {post.topic}</span>
-                    </p>
+                    <Link href={`/author/${post.authorId}`}>
+                        <span className='text-secondary'>{post.authorName} </span>
+                    </Link>
+                    in{" "}
+                    <span className='text-green'> {post.topic}</span>
                     <p>
                         <span>{post.updatedAt}</span>
                     </p>

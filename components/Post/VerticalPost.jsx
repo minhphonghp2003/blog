@@ -11,7 +11,8 @@ function VerticalPost({ className, post, isForeword }) {
           isForeword && <p className='text-gray text-verticleforeword'>  {post.foreword}...</p>
         }
         <div className='mt-4 text-author text-gray '>
-          <p > {post.author} in <span className='text-green'> {post.topic}</span> </p>
+          <p className=' inline mb-1'>{post.author} </p>
+          in <span className='text-green'> {post.topic}</span>
           <p> {post.updated_at}</p>
         </div>
       </Link>

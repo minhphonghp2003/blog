@@ -17,7 +17,8 @@ function Popular({ posts }) {
                   <Link href={`/post/${p.id}`}>
                     <p className='text-populartitle font-bold'>{p.title}</p>
                     <div className='text-gray text-author'>
-                      <span>{p.author}</span> in <span className='text-green'>{p.topic}</span> . <span>{p.updated_at}</span>
+                      <p className='inline'>{p.author} </p>
+                      in <span className='text-green'>{p.topic}</span> . <span>{p.updated_at}</span>
                     </div>
                   </Link>
 

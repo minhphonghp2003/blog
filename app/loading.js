@@ -2,20 +2,36 @@ import React from "react";
 
 function loading() {
     return (
-        <div className="flex flex-col w-1/2 gap-5 p-2 mx-auto bg-white shadow-lg select-none sm:p-4 sm:h-64 rounded-2xl sm:flex-row ">
-            <div className="bg-gray-200 h-52 sm:h-full sm:w-72 rounded-xl animate-pulse"></div>
-            <div className="flex flex-col flex-1 gap-5 sm:p-2">
-                <div className="flex flex-col flex-1 gap-3">
-                    <div className="w-full bg-gray animate-pulse h-14 rounded-2xl"></div>
-                    <div className="w-full h-3 bg-gray animate-pulse rounded-2xl"></div>
-                    <div className="w-full h-3 bg-gray animate-pulse rounded-2xl"></div>
-                    <div className="w-full h-3 bg-gray animate-pulse rounded-2xl"></div>
-                    <div className="w-full h-3 bg-gray animate-pulse rounded-2xl"></div>
+        <div className="min-h-screen bg-white">
+            <header className="bg-gray py-8">
+                <div className="max-w-4xl mx-auto px-4">
+                    <div className="animate-pulse flex items-center space-x-4">
+                        <div className="h-12 w-12 bg-gray rounded-full"></div>
+                        <div>
+                            <div className="h-4 w-20 bg-gray rounded"></div>
+                            <div className="h-4 w-16 bg-gray rounded mt-2"></div>
+                        </div>
+                    </div>
                 </div>
-                <div className="flex gap-3 mt-auto">
-                    <div className="w-20 h-8 bg-gray rounded-full animate-pulse"></div>
-                    <div className="w-20 h-8 bg-gray rounded-full animate-pulse"></div>
-                    <div className="w-20 h-8 ml-auto bg-gray rounded-full animate-pulse"></div>
+            </header>
+            <div className="max-w-4xl mx-auto px-4 py-8">
+                <div className="animate-pulse space-y-4">
+                    <div className="h-4 bg-gray rounded w-2/3"></div>
+                    <div className="h-4 bg-gray rounded"></div>
+                    <div className="h-4 bg-gray rounded"></div>
+                    <div className="h-4 bg-gray rounded w-1/2"></div>
+                    <div className="h-4 bg-gray rounded"></div>
+                    <div className="h-4 bg-gray rounded"></div>
+                    <div className="h-4 bg-gray rounded w-3/4"></div>
+                </div>
+
+                <div className="animate-pulse space-y-4 mt-12">
+                    <div className="h-4 bg-gray rounded w-2/3"></div>
+                    <div className="h-4 bg-gray rounded"></div>
+                    <div className="h-4 bg-gray rounded"></div>
+                    <div className="h-4 bg-gray rounded w-1/2"></div>
+                    <div className="h-4 bg-gray rounded"></div>
+                    <div className="h-4 bg-gray rounded"></div>
                 </div>
             </div>
         </div>

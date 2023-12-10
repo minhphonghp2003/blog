@@ -21,21 +21,24 @@ module.exports = {
             header: ["lora", "serif"],
             dm: ["DM Serif Text"],
             georgia: "Georgia",
-            posttitle:"Lora",
-            cursive: "Cedarville-Cursive",
+            posttitle: "Lora",
+            cursive: "Cedarville",
+            roboto:"roboto",
+            lato:"lato"
+        
         },
         fontSize: {
-            blog: "1.345rem",
+            blog: "1.4rem",
             cardtitle: "2rem",
             cardforeword: "1.24em",
             populartitle: "1.3em",
             verticletitle: "1.5em",
             verticleforeword: "1rem",
             horiztitle: "1.1em",
-            horizbigtitle:"1.55em",
+            horizbigtitle: "1.55em",
             horizforeword: "1rem",
             author: "0.75rem",
-            posttitle:"2.5rem"
+            posttitle: "2.5rem",
         },
     },
 };

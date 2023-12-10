@@ -5,7 +5,7 @@ import { Menu, Transition } from '@headlessui/react'
 import Search from './Search'
 
 function MenuNavBar() {
-  
+
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
@@ -41,17 +41,10 @@ function MenuNavBar() {
                                 Reading Lists
                             </a>
                         </Menu.Item>
+
                         <Menu.Item>
                             <a
-                                href="#"
-                                className="text-gray block px-4 py-2 text-sm"
-                            >
-                                Write a post
-                            </a>
-                        </Menu.Item>
-                        <Menu.Item>
-                            <a
-                                href="#"
+                                href="/contact"
                                 className="text-gray block px-4 py-2 text-sm"
                             >
                                 Contact

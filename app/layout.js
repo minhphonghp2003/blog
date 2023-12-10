@@ -4,6 +4,7 @@ import { SlArrowUp } from "react-icons/sl";
 import MenuNavBar from "@components/Home/Menu";
 import Search from "@components/Home/Search";
 import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa6";
 
 export const metadata = {
     title: "Nguyen Minh Phong",
@@ -16,11 +17,12 @@ export default function RootLayout({ children }) {
             <body className="bg-primary text-secondary font-sans antialiased transition-all">
                 <a
                     href="#"
-                    className="hidden sm:block rounded-full w-[50px] h-[50px] text-center leading-[45px] bg-primary fixed right-[40px] bottom-[100px] text-[25px] text-[#999] "
+                    className="hidden sm:flex items-center gap-2  fixed right-[20px] bottom-[100px] text-[15px] text-secondary rotate-90 uppercase"
                 >
-                    <i>
-                        <SlArrowUp />
-                    </i>
+                    <FaArrowLeft className="inline " />
+                    <span className="[writing-mode: vertical-rl] inline ">
+                        top
+                    </span>
                 </a>
                 <header
                     id="header"
@@ -32,12 +34,12 @@ export default function RootLayout({ children }) {
                         </div>
                         <div className="hidden sm:flex z-20  items-center gap-3">
                             <Search />
-                            <button
-                                type="button"
+                            <Link
+                                href="/contact"
                                 className="text-gray border-[1px]  font-medium rounded-lg text-sm py-[0.3rem] px-[0.7rem]"
                             >
                                 Contact
-                            </button>
+                            </Link>
                         </div>
                         <div className="sm:hidden block">
                             <MenuNavBar />
@@ -46,10 +48,10 @@ export default function RootLayout({ children }) {
                 </header>
                 <nav className="sm:block hidden sm:sticky sm:top-0   max-w-[100vw] bg-primary z-10 px-40 py-4 shadow-[0_1px_0px_0px_rgba(0, 0, 0, 0.05)] ">
                     <ul className="flex justify-between text-gray text-[0.97em] uppercase items-center ">
-                        <a href="/">Home</a>
-                        <a href="/#topic">Topics</a>
-                        <a href="/#rlist">Reading Lists</a>
-                        <li>Write a post</li>
+                        <Link href="/">Home</Link>
+                        <Link href="/#topic">Topics</Link>
+                        <Link href="/#rlist">Reading Lists</Link>
+                        <Link href="/contact">Write a post</Link>
                     </ul>
                 </nav>
                 <div className="mt-3 ">{children}</div>
