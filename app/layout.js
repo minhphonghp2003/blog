@@ -5,6 +5,7 @@ import MenuNavBar from "@components/Home/Menu";
 import Search from "@components/Home/Search";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa6";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
     title: "Nguyen Minh Phong",
@@ -55,6 +56,7 @@ export default function RootLayout({ children }) {
                     </ul>
                 </nav>
                 <div className="mt-3 ">{children}</div>
+                <SpeedInsights />
 
                 <footer className="mt-4">
                     <div className="w-full max-w-screen-xl mx-auto p-3 md:py-4">
