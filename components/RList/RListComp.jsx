@@ -1,12 +1,15 @@
+import Link from 'next/link'
 import React from 'react'
 
-function RListComp({rlist}) {
+function RListComp({ rlist }) {
   return (
-    <div className=' '>
+    <Link href={`/readinglist/${rlist.id}`}>
+      <div className=' '>
         <p className='font-bold uppercase mb-2'>{rlist.name}</p>
-        <img src={rlist.icon} alt=""  className='object-cover rounded-md'/>
+        <img src={rlist.icon} alt="" className='object-cover rounded-md' />
         <p className='text-gray'>5 posts</p>
-    </div>
+      </div>
+    </Link>
   )
 }
 
