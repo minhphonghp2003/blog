@@ -6,13 +6,13 @@ function Header({ post }) {
         <div className='max-w-full m-8 sm:max-w-[60%] sm:m-auto sm:mb-10'>
             <p className='font-[500] text-posttitle font-posttitle mb-4'>{post.title}</p>
             <div className=' flex gap-4 '>
-                <img className='h-[40px] w-[40px] rounded-full ' src={post.authorImage} />
+                <img className='h-[40px] w-[40px] rounded-full ' src={post.author.avatar} />
                 <div className='text-author text-gray'>
-                    <Link href={`/author/${post.authorId}`}>
-                        <span className='text-secondary'>{post.authorName} </span>
+                    <Link href={`/author/${post.author.id}`}>
+                        <span className='text-secondary'>{post.author.fullName} </span>
                     </Link>
                     in{" "}
-                    <span className='text-green'> {post.topic}</span>
+                    <span className='text-green'> {post.topic.name}</span>
                     <p>
                         <span>{post.updatedAt}</span>
                     </p>

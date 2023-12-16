@@ -8,7 +8,7 @@ function AllStories() {
   return (
     <div id='allposts' ref={anchorRef}>
       <DividerTitle title="All Posts" />
-      <PaginatedPost anchor="allposts" link="https://655c5d4925b76d9884fd0e77.mockapi.io/posts" />
+      <PaginatedPost anchor="allposts" api="post/all" />
 
     </div>
   )

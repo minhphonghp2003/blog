@@ -3,27 +3,22 @@ import React, { useEffect, useState } from 'react'
 import Pagination from './Pagination';
 import HorizonPost from '@components/Post/HorizonPost';
 import VerticalPost from '@components/Post/VerticalPost';
+import { fetchPostPage } from '@utils/network';
+import { extractImages } from '@utils/helper';
 
 
-function PaginatedPost({ anchor, link }) {
-
+function PaginatedPost({ anchor, api ,restParamFetch}) {
     let [currentPage, setCurrentPage] = useState(1)
     let [totalCount, setTotalCount] = useState(0)
     let [posts, setPosts] = useState(null)
     let siblingCount = 1
     let pageSize = 10
     let fetchPost = async () => {
-        const url = new URL(link);
-        url.searchParams.append('page', currentPage);
-        url.searchParams.append('limit', pageSize);
-
-        let res = await fetch(url, {
-            method: 'GET',
-            headers: { 'content-type': 'application/json' },
-        })
+       let res = await fetchPostPage({api ,limit:pageSize,page:currentPage-1,sortBy:"updatedAt", restParam:restParamFetch}) 
         let data = await res.json()
-        setPosts(data)
-        setTotalCount(50)
+        extractImages({posts:data.content})
+        setPosts(data.content)
+        setTotalCount(data.totalElements)
 
     }
     useEffect(() => {

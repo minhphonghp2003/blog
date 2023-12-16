@@ -23,7 +23,7 @@ function Interacting({ post }) {
             </div>
             <div className='hidden sm:flex flex-col mt-4 items-center'>
                 <p className='text-center text-gray'>Reply</p>
-                <p className=' text-gray'>{post.commentCount}</p>
+                <p className=' text-gray'>{post.comments.length}</p>
                 <BiMessageRounded className='text-horizbigtitle '  />
             </div>
         </div>

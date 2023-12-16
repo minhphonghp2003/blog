@@ -3,18 +3,19 @@ import Interacting from "@components/Post/Interacting";
 import Related from "@components/Post/Related";
 import DividerTitle from "@components/Shared/Divider";
 import ScrollProgress from "@components/Shared/ScrollProgress";
+import { extractImages } from "@utils/helper";
+import { fetchPost } from "@utils/network";
+import { getPostContent } from "@utils/storage";
 import Link from "next/link";
 import React from "react";
+import 'react-quill/dist/quill.snow.css';
 import { SiBuymeacoffee } from "react-icons/si";
 
 async function Post({ params }) {
-    let res = await fetch(
-        "https://657470c9f941bda3f2afc286.mockapi.io/post/" + params.id,
-        {
-            cache: "no-store",
-        }
-    );
+    let res = await fetchPost({ id: params.id });
     let post = await res.json();
+    extractImages({ posts: [post] });
+    post.content = await getPostContent({ path: post.postLink });
     res = await fetch(
         "https://657470c9f941bda3f2afc286.mockapi.io/post/" +
             (parseInt(params.id) + 1),
@@ -22,7 +23,9 @@ async function Post({ params }) {
             cache: "no-store",
         }
     );
+
     let next = await res.json();
+
     return (
         <div className="">
             <ScrollProgress />
@@ -42,77 +45,50 @@ async function Post({ params }) {
                         {post.foreword}
                     </p>
                     <div className="text-blog  first-letter:text-[7rem] first-letter:mr-3 first-letter:float-left first-letter:font-[500] font-blog first-letter:leading-none">
-                        <p>
-                            {post.content}
-                            Moulin Rouge is best known as the birthplace of the
-                            modern form of the can-can dance. Originally
-                            introduced as a seductive dance by the courtesans
-                            who operated from the site, the can-can dance revue
-                            evolved into a form of entertainment of its own and
-                            led to the introduction of cabarets across Europe.
-                            Today, the Moulin Rouge is a tourist attraction,
-                            offering musical dance entertainment for visitors
-                            from around the world. The club’s decor still
-                            contains much of the romance of fin de siècle
-                            France. The Belle Époque was a period of peace and
-                            optimism marked by industrial progress, and a
-                            particularly rich cultural exuberance was about at
-                            the opening of the Moulin Rouge. The Expositions
-                            Universelles of 1889 and 1900 are symbols of this
-                            period. The Eiffel Tower was also constructed in
-                            1889, epitomising the spirit of progress along with
-                            the culturally transgressive cabaret.[2] Japonism,
-                            an artistic movement inspired by the Orient, with
-                            Henri de Toulouse-Lautrec as its most brilliant
-                            disciple, was also at its height. Montmartre, which,
-                            at the heart of an increasingly vast and impersonal
-                            Paris, retained a bucolic village atmosphere;
-                            festivities and artists mixed, with pleasure and
-                            beauty as their values. On 6 October 1889, the
-                            Moulin Rouge opened in the Jardin de Paris, at the
-                            foot of the Montmartre hill. Its creator Joseph
-                            Ollerand his Manager Charles Zidler were formidable
-                            businessmen who understood the public’s tastes. The
-                            aim was to allow the very rich to come and ‘slum it’
-                            in a fashionable district, Montmartre. The
-                            extravagant setting – the garden was adorned with a
-                            gigantic elephant – allowed people from all walks of
-                            life to mix. Workers, residents of the Place
-                            Blanche, artists, the middle classes, businessmen,
-                            elegant women, and foreigners passing through Paris
-                            rubbed shoulders. Nicknamed “The First Palace of
-                            Women” by Oller and Zidler, the cabaret quickly
-                            became a great success.
-                        </p>
+                        <div className="ql-editor view"
+                            dangerouslySetInnerHTML={{
+                                __html: post.content,
+                            }}
+                        />
                     </div>
                     <div className="flex flex-wrap gap-2 mt-14">
                         {post.tags &&
                             post.tags.map((t) => {
                                 return (
-                                    <a className="bg-[#0000000d] hover:text-green text-secondary rounded-md text-author px-[3px] py-[6px]">
-                                        {t}
+                                    <a
+                                        key={t}
+                                        className="bg-[#0000000d] hover:text-green text-secondary rounded-md text-author px-[3px] py-[6px]"
+                                    >
+                                        {t.name}
                                     </a>
                                 );
                             })}
                     </div>
                     <div className="flex sm:flex-row flex-col gap-5 mt-12 justify-center">
                         <img
-                            src={post.authorImage}
+                            src={post.author && post.author.avatar}
                             className="self-center rounded-full max-w-[120px]"
                         />
                         <div className="flex flex-col gap-4">
-                            <Link href={`/author/${post.authorId}`}>
+                            <Link
+                                href={`/author/${
+                                    post.author && post.author.id
+                                }`}
+                            >
                                 <p className="font-bold text-horiztitle">
-                                    {post.authorName}
+                                    {post.author && post.author.fullName}
                                 </p>
                             </Link>
-                            <p>{post.authorBio}</p>
+                            <p>{post.author.bio}</p>
                             <div className="flex flex-wrap gap-4">
-                                {post.authorSocials &&
-                                    post.authorSocials.map((s) => {
+                                {post.author.socials &&
+                                    post.author.socials.map((s) => {
                                         return (
-                                            <a className=" hover:text-green">
-                                                {s}
+                                            <a
+                                                key={s}
+                                                className=" hover:text-green"
+                                            >
+                                                {s.name}
                                             </a>
                                         );
                                     })}

@@ -1,33 +1,11 @@
-"use client"
-import React, { useEffect, useState } from 'react'
 import DividerTitle from '@components/Shared/Divider'
-import Pagination from '@components/Shared/Pagination'
 import RListComp from './RListComp'
 
 
-function RList() {
-  let [currentPage, setCurrentPage] = useState(1)
-  let [totalCount, setTotalCount] = useState(0)
-  let [rlists, setRLists] = useState(null)
-  let siblingCount = 1
-  let pageSize = 9
-  let fetchRLists = async () => {
-    const url = new URL("https://655c5d4925b76d9884fd0e77.mockapi.io/topic");
-    url.searchParams.append('page', currentPage);
-    url.searchParams.append('limit', pageSize);
+async function RList() {
+  let res = await fetch(process.env.NEXT_PUBLIC_BACKEND + "readingList/all")
+  let rlists = await res.json()
 
-    let res = await fetch(url, {
-      method: 'GET',
-      headers: { 'content-type': 'application/json' },
-    })
-    let data = await res.json()
-    setRLists(data)
-    setTotalCount(18)
-
-  }
-  useEffect(() => {
-    fetchRLists()
-  }, [currentPage])
 
   return (
     <div id='rlist' className=''>
@@ -39,9 +17,7 @@ function RList() {
           })
         }
       </div>
-      <div className='mt-8 flex justify-center'>
-        <Pagination currentPage={currentPage} pageSize={pageSize} siblingCount={siblingCount} totalCount={totalCount} onPageChange={setCurrentPage} />
-      </div>
+     
     </div>
   )
 }
