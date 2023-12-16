@@ -1,11 +1,12 @@
 import { fetchPost } from '@utils/network'
 import TopicComp from './TopicComp'
 import DividerTitle from '@components/Shared/Divider'
+import { extractImageFromProp, extractPostImages } from '@utils/helper'
 
 async function Topic() {
   let res = await fetch(process.env.NEXT_PUBLIC_BACKEND + "topic/all")
   let topics = await res.json()
-
+  extractImageFromProp({ list: topics, prop: "icon" })
   return (
     <div >
 

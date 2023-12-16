@@ -3,7 +3,7 @@ import Interacting from "@components/Post/Interacting";
 import Related from "@components/Post/Related";
 import DividerTitle from "@components/Shared/Divider";
 import ScrollProgress from "@components/Shared/ScrollProgress";
-import { extractImages } from "@utils/helper";
+import { extractPostImages } from "@utils/helper";
 import { fetchPost } from "@utils/network";
 import { getPostContent } from "@utils/storage";
 import Link from "next/link";
@@ -14,7 +14,7 @@ import { SiBuymeacoffee } from "react-icons/si";
 async function Post({ params }) {
     let res = await fetchPost({ id: params.id });
     let post = await res.json();
-    extractImages({ posts: [post] });
+    extractPostImages({ posts: [post] });
     post.content = await getPostContent({ path: post.postLink });
     res = await fetch(
         "https://657470c9f941bda3f2afc286.mockapi.io/post/" +

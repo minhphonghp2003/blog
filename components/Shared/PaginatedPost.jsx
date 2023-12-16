@@ -4,7 +4,7 @@ import Pagination from './Pagination';
 import HorizonPost from '@components/Post/HorizonPost';
 import VerticalPost from '@components/Post/VerticalPost';
 import { fetchPostPage } from '@utils/network';
-import { extractImages } from '@utils/helper';
+import { extractPostImages } from '@utils/helper';
 
 
 function PaginatedPost({ anchor, api ,restParamFetch}) {
@@ -16,7 +16,7 @@ function PaginatedPost({ anchor, api ,restParamFetch}) {
     let fetchPost = async () => {
        let res = await fetchPostPage({api ,limit:pageSize,page:currentPage-1,sortBy:"updatedAt", restParam:restParamFetch}) 
         let data = await res.json()
-        extractImages({posts:data.content})
+        extractPostImages({posts:data.content})
         setPosts(data.content)
         setTotalCount(data.totalElements)
 

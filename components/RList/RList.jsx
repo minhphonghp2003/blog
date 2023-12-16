@@ -1,11 +1,12 @@
 import DividerTitle from '@components/Shared/Divider'
 import RListComp from './RListComp'
+import { extractImageFromProp } from '@utils/helper'
 
 
 async function RList() {
   let res = await fetch(process.env.NEXT_PUBLIC_BACKEND + "readingList/all")
   let rlists = await res.json()
-
+  extractImageFromProp({list:rlists,prop:"image"})
 
   return (
     <div id='rlist' className=''>

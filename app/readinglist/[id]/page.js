@@ -2,6 +2,7 @@ import Popular from "@components/Popular/Popular";
 import DividerTitle from "@components/Shared/Divider";
 import PaginatedPost from "@components/Shared/PaginatedPost";
 import TopicHeader from "@components/Shared/TopicHeader";
+import { extractPostImages } from "@utils/helper";
 import { fetchPostPage } from "@utils/network";
 import Link from "next/link";
 import React from "react";
@@ -15,6 +16,7 @@ async function ReadingList({ params }) {
         restParam: { id: params.id, getBy: "readinglist" },
     });
     let posts = (await res.json()).content;
+    extractPostImages({ posts });
     let headPost = posts[0];
     let popular = posts.slice(1, posts.length);
     return (

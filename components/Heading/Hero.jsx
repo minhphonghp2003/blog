@@ -4,7 +4,7 @@ import React from 'react'
 function Hero({ post }) {
     return (
         <div className='sm:flex gap-8 flex-row-reverse mb-4'>
-            <img src={post.imageLink} className='mb-8 hover:-translate-y-3 duration-700 object-cover' />
+            <img src={post.imageLink} className='mb-8 hover:-translate-y-3 duration-700 object-cover w-[50%]' />
             <div className='self-center'>
                 <span className="inline-flex items-center rounded-full text-green bg-[rgba(3, 168, 124, 0.11)] px-2 py-1 font-medium bg-greenbg">
                     Randomly choice

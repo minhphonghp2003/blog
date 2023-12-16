@@ -12,9 +12,9 @@ function HorizonPost({ className, post, isForeword, isBigTitle }) {
             isForeword && <p className='text-gray text-horizforeword'>{post.foreword}...</p>
           }
           <div className='mt-2 text-author text-gray'>
-            {post.author.fullName}
-            in <span className='text-green'> {post.topic.name}</span>
-            <p>{post.updatedAt}</p>
+            <p className=' inline mb-1'>{post.author.fullName} </p>
+            in <span className='text-green'>{post.topic.name}</span>
+            <p> {post.updatedAt}</p>
           </div>
         </div>
       </div>
