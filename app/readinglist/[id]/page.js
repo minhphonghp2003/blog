@@ -9,7 +9,7 @@ import React from "react";
 
 async function ReadingList({ params }) {
     let res = await fetchPostPage({
-        api: "post/postby",
+        api: "post/all",
         limit: 6,
         page: 0,
         sortBy: "viewCount",
@@ -29,7 +29,7 @@ async function ReadingList({ params }) {
                 </Link>
                 <PaginatedPost
                     restParamFetch={{ id: params.id, getBy: "readinglist" }}
-                    api="post/postby"
+                    api="post/all"
                 />
             </div>
             <div className="sm:sticky sm:top-[4rem] self-start">

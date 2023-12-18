@@ -12,7 +12,7 @@ function Header({ post }) {
                         <span className='text-secondary'>{post.author.fullName} </span>
                     </Link>
                     in{" "}
-                    <span className='text-green'> {post.topic.name}</span>
+                    <a href={`/category/${post.topic.id}`} className='text-green'> {post.topic.name}</a>
                     <p>
                         <span>{post.updatedAt}</span>
                     </p>

@@ -4,7 +4,7 @@ import { fetchPostPage } from '@utils/network';
 
 async function Related({ className, topic }) {
 
-    let res = await fetchPostPage({ api: "post/postby", limit: 3, page: 0, sortBy: "updatedAt", restParam: { id: topic.id, getBy: "topic" } })
+    let res = await fetchPostPage({ api: "post/all", limit: 3, page: 0, sortBy: "updatedAt", restParam: { id: topic.id, getBy: "topic" } })
     let related = (await res.json()).content;
     extractPostImages({ posts: related })
 

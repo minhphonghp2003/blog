@@ -9,14 +9,15 @@ import React from "react";
 
 async function Topic({ params }) {
     let res = await fetchPostPage({
-        api: "post/postby",
+        api: "post/all",
         limit: 6,
         page: 0,
         sortBy: "viewCount",
         restParam: { id: params.id, getBy: "topic" },
     });
+
     let posts = (await res.json()).content;
-    extractPostImages({posts})
+    extractPostImages({ posts });
     let headPost = posts[0];
     let popular = posts.slice(1, posts.length);
     return (
@@ -28,7 +29,7 @@ async function Topic({ params }) {
                 </Link>
                 <PaginatedPost
                     restParamFetch={{ id: params.id, getBy: "topic" }}
-                    api="post/postby"
+                    api="post/all"
                 />
             </div>
             <div className="sm:sticky sm:top-[4rem] self-start">

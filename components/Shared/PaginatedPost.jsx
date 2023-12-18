@@ -7,16 +7,16 @@ import { fetchPostPage } from '@utils/network';
 import { extractPostImages } from '@utils/helper';
 
 
-function PaginatedPost({ anchor, api ,restParamFetch}) {
+function PaginatedPost({ anchor, api, restParamFetch }) {
     let [currentPage, setCurrentPage] = useState(1)
     let [totalCount, setTotalCount] = useState(0)
     let [posts, setPosts] = useState(null)
     let siblingCount = 1
     let pageSize = 10
     let fetchPost = async () => {
-       let res = await fetchPostPage({api ,limit:pageSize,page:currentPage-1,sortBy:"updatedAt", restParam:restParamFetch}) 
+        let res = await fetchPostPage({ api, limit: pageSize, page: currentPage - 1, sortBy: "updatedAt", restParam: restParamFetch })
         let data = await res.json()
-        extractPostImages({posts:data.content})
+        extractPostImages({ posts: data.content })
         setPosts(data.content)
         setTotalCount(data.totalElements)
 
@@ -31,7 +31,7 @@ function PaginatedPost({ anchor, api ,restParamFetch}) {
             // 👇 Will scroll smoothly to the top of the next section
             element.scrollIntoView({ behavior: 'smooth' });
         }
-        
+
         setCurrentPage(page)
     }
 

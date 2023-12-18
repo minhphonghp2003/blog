@@ -1,24 +1,39 @@
 import DividerTitle from "@components/Shared/Divider";
 import PaginatedPost from "@components/Shared/PaginatedPost";
+import { extractImageFromProp } from "@utils/helper";
 import React from "react";
 import { SiBuymeacoffee } from "react-icons/si";
 let Information = ({ author }) => {
     return (
         <div className="flex flex-col mb-10">
-            <p className="text-populartitle font-bold mb-8">{author.fullname}</p>
+            <p className="text-populartitle font-bold mb-8">
+                {author.fullName}
+            </p>
             <div className="flex">
                 <p>{author.bio}</p>
-                <img className="w-[82px] h-[82px] rounded-full items-center" src={author.avatar} />
+                <img
+                    className="w-[82px] h-[82px] rounded-full items-center"
+                    src={author.avatar}
+                />
             </div>
             <div className="flex flex-wrap gap-2 mt-4">
                 {author.socials &&
                     author.socials.map((s) => {
-                        return <p>{s}</p>;
+                        if (s.name == "BuyMeACoffee") {
+                            return (
+                                <a
+                                    href={s.link}
+                                    id="works"
+                                    className="  flex items-center bg-[yellow] rounded-lg p-1 font-[cursive]"
+                                >
+                                    {" "}
+                                    Buy me a coffee{" "}
+                                    <SiBuymeacoffee color="black" />
+                                </a>
+                            );
+                        }
+                        return <a href={s.link}>{s.name}</a>;
                     })}
-                <div id="works" className="  flex items-center bg-[yellow] rounded-lg p-1 font-[cursive]">
-                    {" "}
-                    Buy me a coffee <SiBuymeacoffee color="black" />
-                </div>
             </div>
         </div>
     );
@@ -26,14 +41,20 @@ let Information = ({ author }) => {
 
 async function Author({ params }) {
     let res = await fetch(
-        "https://657470c9f941bda3f2afc286.mockapi.io/author/" + params.id
+        process.env.NEXT_PUBLIC_BACKEND + "user/author?id=" + params.id,
+        { cache: "no-store" }
     );
     let data = await res.json();
+    extractImageFromProp({ list: [data], prop: "avatar" });
     return (
         <div className="max-w-[60vw] m-auto">
             <Information author={data} />
-            <DividerTitle title="Works"/>
-            <PaginatedPost anchor="works" link="https://657470c9f941bda3f2afc286.mockapi.io/post"/>
+            <DividerTitle title="Works" />
+            <PaginatedPost
+                anchor="works"
+                api="post/all"
+                restParamFetch={{ uuId: params.id, getBy: "author" }}
+            />
         </div>
     );
 }
