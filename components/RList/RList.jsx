@@ -10,7 +10,7 @@ async function RList() {
 
   return (
     <div id='rlist' className=''>
-      <DividerTitle title="Reading lists " />
+      <DividerTitle title="📖Reading lists " />
       <div className='grid sm:grid-cols-3 grid-cols-2 gap-4'>
         {
           rlists && rlists.map(rlist => {

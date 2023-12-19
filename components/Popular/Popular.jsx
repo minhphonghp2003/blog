@@ -6,7 +6,7 @@ function Popular({ posts }) {
   let populars = posts.slice(0, 5)
   return (
     <div>
-      <DividerTitle title="Popular" />
+      <DividerTitle title="🎗️Popular" />
       <div className=' [counter-reset:list-item]'>
         <ol>
           {

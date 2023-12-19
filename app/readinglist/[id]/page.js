@@ -22,8 +22,10 @@ async function ReadingList({ params }) {
     return (
         <div className=" gap-8 sm:grid grid-cols-3  max-w-[90vw] sm:max-w-[80vw] m-auto">
             <div className="col-span-2">
-                <DividerTitle title="Reading List" />
-
+                <DividerTitle title="Reading List " />
+                <p>
+                    
+                </p>
                 <Link href={`/post/${headPost.id}`}>
                     <TopicHeader post={headPost} />
                 </Link>

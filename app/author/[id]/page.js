@@ -6,9 +6,12 @@ import { SiBuymeacoffee } from "react-icons/si";
 let Information = ({ author }) => {
     return (
         <div className="flex flex-col mb-10">
-            <p className="text-populartitle font-bold mb-8">
-                {author.fullName}
-            </p>
+            <div className="mb-8">
+                <p className="text-populartitle font-bold ">
+                    {author.fullName}
+                </p>
+                <p className="italic text-gray">🤙🤙 Call me {author.phone}</p>
+            </div>
             <div className="flex">
                 <p>{author.bio}</p>
                 <img
@@ -32,7 +35,14 @@ let Information = ({ author }) => {
                                 </a>
                             );
                         }
-                        return <a href={s.link}>{s.name}</a>;
+                        return (
+                            <a
+                                className="hover:text-green text-secondary"
+                                href={s.link}
+                            >
+                                {s.name}
+                            </a>
+                        );
                     })}
             </div>
         </div>

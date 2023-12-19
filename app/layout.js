@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
                                 href="/contact"
                                 className="text-gray border-[1px]  font-medium rounded-lg text-sm py-[0.3rem] px-[0.7rem]"
                             >
-                                Contact
+                               ℹ️ Contact
                             </Link>
                         </div>
                         <div className="sm:hidden block">
@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
                         <Link href="/">Home</Link>
                         <Link href="/#topic">Topics</Link>
                         <Link href="/#rlist">Reading Lists</Link>
-                        <Link href="/contact">Write a post</Link>
+                        <Link href="/contact">✍️Write a post</Link>
                     </ul>
                 </nav>
                 <div className="mt-3 ">{children}</div>

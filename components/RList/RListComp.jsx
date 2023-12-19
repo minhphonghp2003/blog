@@ -7,7 +7,7 @@ function RListComp({ rlist }) {
       <div className=' '>
         <p className='font-bold uppercase mb-2'>{rlist.name}</p>
         <img src={rlist.image} alt="" className='object-cover rounded-md' />
-        <p className='text-gray'>5 posts</p>
+        <p className='text-gray'>{rlist.description}</p>
       </div>
     </Link>
   )

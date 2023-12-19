@@ -7,7 +7,7 @@ function AllStories() {
    const anchorRef = useRef(null)
   return (
     <div id='allposts' ref={anchorRef}>
-      <DividerTitle title="All Posts" />
+      <DividerTitle title="📝All Posts" />
       <PaginatedPost anchor="allposts" api="post/all" />
 
     </div>

@@ -1,14 +1,15 @@
+import Comment from "@components/Post/Comment";
 import Header from "@components/Post/Header";
 import Interacting from "@components/Post/Interacting";
 import Related from "@components/Post/Related";
 import DividerTitle from "@components/Shared/Divider";
 import ScrollProgress from "@components/Shared/ScrollProgress";
-import { extractPostImages } from "@utils/helper";
+import { extractImageFromProp, extractPostImages } from "@utils/helper";
 import { fetchPost } from "@utils/network";
 import { getPostContent } from "@utils/storage";
 import Link from "next/link";
+import { Editor } from "novel";
 import React from "react";
-import 'react-quill/dist/quill.snow.css';
 import { SiBuymeacoffee } from "react-icons/si";
 
 async function Post({ params }) {
@@ -16,16 +17,13 @@ async function Post({ params }) {
     let post = await res.json();
     extractPostImages({ posts: [post] });
     post.content = await getPostContent({ path: post.postLink });
-    res = await fetch(
-        "https://657470c9f941bda3f2afc286.mockapi.io/post/" +
-            (parseInt(params.id) + 1),
-        {
-            cache: "no-store",
+    extractImageFromProp({ list: [post], prop: "nextImageLink" });
+    let coffeeLink = "#";
+    post.author.socials.map((s) => {
+        if (s.name == "BuyMeACoffee") {
+            coffeeLink = s.link;
         }
-    );
-
-    let next = await res.json();
-
+    });
     return (
         <div className="">
             <ScrollProgress />
@@ -45,7 +43,7 @@ async function Post({ params }) {
                         {post.foreword}
                     </p>
                     <div className="text-blog  first-letter:text-[7rem] first-letter:mr-3 first-letter:float-left first-letter:font-[500] font-blog first-letter:leading-none">
-                        <div className="ql-editor view"
+                        <div
                             dangerouslySetInnerHTML={{
                                 __html: post.content,
                             }}
@@ -85,6 +83,7 @@ async function Post({ params }) {
                                     post.author.socials.map((s) => {
                                         return (
                                             <a
+                                                href={s.link}
                                                 key={s}
                                                 className=" hover:text-green"
                                             >
@@ -107,25 +106,26 @@ async function Post({ params }) {
                     topic={post.topic}
                 />
             </div>
+            <div>
+                {/* <Comment /> */}
+            </div>
             <div className="fixed bottom-0 flex justify-center sm:justify-between w-full bg-primary p-4 border-t-[1px] border-[#0000001a]">
-                <div className="sm:ml-[10vw]  flex items-center bg-[yellow] rounded-lg p-1 font-[cursive]">
+                <a
+                    href={coffeeLink}
+                    className="sm:ml-[10vw]  flex items-center bg-[yellow] rounded-lg p-1 font-[cursive]"
+                >
                     {" "}
                     Buy me a coffee <SiBuymeacoffee color="black" />
-                </div>
+                </a>
                 <div className="mr-[10vw] hidden sm:block">
                     {" "}
                     Up next:
                     <img
                         className="w-[35px] h-[35px] inline rounded-full mx-2"
-                        src={next.imageLink}
+                        src={post.nextImageLink}
                     />
-                    <a key={next.id} href={`/post/${next.id}`}>
-                        <p className="inline">
-                            {next.title
-                                ? next.title.slice(0, 50)
-                                : "Comming soon..."}
-                            ...
-                        </p>
+                    <a href={`/post/${post.nextId}`}>
+                        <p className="inline">{post.nextTitle}</p>
                     </a>
                 </div>
             </div>
