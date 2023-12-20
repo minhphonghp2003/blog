@@ -11,6 +11,8 @@ import Link from "next/link";
 import { Editor } from "novel";
 import React from "react";
 import { SiBuymeacoffee } from "react-icons/si";
+const edjsHTML = require("editorjs-html");
+const edjsParser = edjsHTML();
 
 async function Post({ params }) {
     let res = await fetchPost({ id: params.id });
@@ -24,6 +26,9 @@ async function Post({ params }) {
             coffeeLink = s.link;
         }
     });
+    post.content = JSON.parse(post.content);
+    const htmlContent = edjsParser.parse(post.content);
+
     return (
         <div className="">
             <ScrollProgress />
@@ -43,11 +48,21 @@ async function Post({ params }) {
                         {post.foreword}
                     </p>
                     <div className="text-blog  first-letter:text-[7rem] first-letter:mr-3 first-letter:float-left first-letter:font-[500] font-blog first-letter:leading-none">
-                        <div
-                            dangerouslySetInnerHTML={{
-                                __html: post.content,
-                            }}
-                        />
+                        <div className="prose max-w-full text-blog" >
+                            {htmlContent.map((item, index) => {
+                                if (typeof item === "string") {
+                                    return (
+                                        <div
+                                            dangerouslySetInnerHTML={{
+                                                __html: item,
+                                            }}
+                                            key={index}
+                                        ></div>
+                                    );
+                                }
+                                return item;
+                            })}
+                        </div>
                     </div>
                     <div className="flex flex-wrap gap-2 mt-14">
                         {post.tags &&
@@ -106,9 +121,7 @@ async function Post({ params }) {
                     topic={post.topic}
                 />
             </div>
-            <div>
-                {/* <Comment /> */}
-            </div>
+            <div>{/* <Comment /> */}</div>
             <div className="fixed bottom-0 flex justify-center sm:justify-between w-full bg-primary p-4 border-t-[1px] border-[#0000001a]">
                 <a
                     href={coffeeLink}

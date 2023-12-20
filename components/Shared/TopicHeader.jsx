@@ -2,6 +2,7 @@ import React from 'react'
 
 function TopicHeader({ post }) {
   return (
+
     <div className='flex flex-col mb-6'>
       <img src={post.imageLink} />
       <p className='text-horizbigtitle font-bold m-3'>{post.title}</p>

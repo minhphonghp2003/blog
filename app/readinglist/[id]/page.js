@@ -23,12 +23,12 @@ async function ReadingList({ params }) {
         <div className=" gap-8 sm:grid grid-cols-3  max-w-[90vw] sm:max-w-[80vw] m-auto">
             <div className="col-span-2">
                 <DividerTitle title="Reading List " />
-                <p>
-                    
-                </p>
-                <Link href={`/post/${headPost.id}`}>
-                    <TopicHeader post={headPost} />
-                </Link>
+                <p></p>
+                {headPost && (
+                    <Link href={`/post/${headPost.id}`}>
+                        <TopicHeader post={headPost} />
+                    </Link>
+                )}
                 <PaginatedPost
                     restParamFetch={{ id: params.id, getBy: "readinglist" }}
                     api="post/all"

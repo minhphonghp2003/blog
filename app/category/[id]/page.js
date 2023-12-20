@@ -19,14 +19,17 @@ async function Topic({ params }) {
     let posts = (await res.json()).content;
     extractPostImages({ posts });
     let headPost = posts[0];
+
     let popular = posts.slice(1, posts.length);
     return (
         <div className=" gap-8 sm:grid grid-cols-3  max-w-[90vw] sm:max-w-[80vw] m-auto">
             <div className="col-span-2">
                 <DividerTitle title="Topic" />
-                <Link href={`/post/${headPost.id}`}>
-                    <TopicHeader post={headPost} />
-                </Link>
+                {headPost && (
+                    <Link href={`/post/${headPost.id}`}>
+                        <TopicHeader post={headPost} />
+                    </Link>
+                )}
                 <PaginatedPost
                     restParamFetch={{ id: params.id, getBy: "topic" }}
                     api="post/all"

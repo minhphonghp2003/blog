@@ -23,9 +23,8 @@ module.exports = {
             georgia: "Georgia",
             posttitle: "Lora",
             cursive: "Cedarville",
-            roboto:"roboto",
-            lato:"lato"
-        
+            roboto: "roboto",
+            lato: "lato",
         },
         fontSize: {
             blog: "1.4rem",
@@ -41,4 +40,5 @@ module.exports = {
             posttitle: "2.5rem",
         },
     },
+    plugins: [require("@tailwindcss/typography")],
 };

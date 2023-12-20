@@ -10,7 +10,7 @@ function Popular({ posts }) {
       <div className=' [counter-reset:list-item]'>
         <ol>
           {
-            populars.map(p => {
+           populars &&  populars.map(p => {
 
               return <li key={p.id} className='mb-[1.5rem] [counter-increment:list-item] before:text-cardtitle before:mr-[0.7rem] before:mt-[-0.5rem] before:opacity-[0.15] before:text-secondary before:italic before:font-georgia before:leading-[1]  before:content-[counter(list-item)] flex'>
                 <div>
