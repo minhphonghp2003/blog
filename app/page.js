@@ -7,19 +7,27 @@ import { extractPostImages } from "@utils/helper";
 import { fetchPostPage } from "@utils/network";
 
 export default async function Home() {
-    let res = await fetchPostPage({
+    let heading = await fetchPostPage({
         api: "post/all",
         limit: 6,
         page: 0,
         sortBy: "updatedAt",
     });
-    let posts = await res.json();
-    extractPostImages({ posts: posts.content });
+    let headingPosts = await heading.json();
+    let popular = await fetchPostPage({
+        api: "post/all",
+        limit: 5,
+        page: 0,
+        sortBy: "viewCount",
+    });
+    let popularPosts = await popular.json()
+    extractPostImages({ posts: headingPosts.content });
+    extractPostImages({ posts: popularPosts.content });
     return (
         <div className="max-w-[90vw] sm:max-w-[80vw] m-auto">
             <div className="flex flex-col gap-8 sm:grid grid-cols-3">
                 <div className="col-span-3">
-                    <Heading posts={posts.content} />
+                    <Heading posts={headingPosts.content} />
                 </div>
                 <div className="col-span-2">
                     <AllStories />
@@ -27,7 +35,7 @@ export default async function Home() {
                     <RList />
                 </div>
                 <div className="sm:sticky sm:top-[4rem] self-start">
-                    <Popular posts={posts.content} />
+                    <Popular posts={popularPosts.content} />
                 </div>
             </div>
         </div>

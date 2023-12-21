@@ -11,7 +11,10 @@ export let getPublicURL = ({ from, path }) => {
 };
 
 export let getPostContent = async ({ path }) => {
-    const { data, error } = await supabase.storage.from("post").download(path);
-
-    return await data.text();
+    try {
+        const { data, error } = await supabase.storage
+            .from("post")
+            .download(path);
+        return await data.text();
+    } catch (error) {}
 };

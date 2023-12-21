@@ -1,4 +1,6 @@
 import Comment from "@components/Post/Comment";
+import { browserName, BrowserTypes  } from 'react-device-detect';
+import { NextResponse, userAgent } from 'next/server'
 import Header from "@components/Post/Header";
 import Interacting from "@components/Post/Interacting";
 import Related from "@components/Post/Related";
@@ -8,13 +10,31 @@ import { extractImageFromProp, extractPostImages } from "@utils/helper";
 import { fetchPost } from "@utils/network";
 import { getPostContent } from "@utils/storage";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+import { headers } from "next/headers";
 import { Editor } from "novel";
 import React from "react";
 import { SiBuymeacoffee } from "react-icons/si";
 const edjsHTML = require("editorjs-html");
 const edjsParser = edjsHTML();
 
-async function Post({ params }) {
+const CommentSection = dynamic(
+    () => import("../../../components/Post/Comment"),
+    { ssr: false }
+);
+async function Post({ params,request }) {
+    const headersList = headers();
+    const information = {
+        referer: null,
+        userAgent: null,
+        ipAddress: null,
+        location: null,
+        os: null,
+    };
+    // headersList.forEach((v, k) => {
+    //     console.log(k, " = ", v);
+    // });
+    information.referer = headersList.get("referer");
     let res = await fetchPost({ id: params.id });
     let post = await res.json();
     extractPostImages({ posts: [post] });
@@ -47,8 +67,8 @@ async function Post({ params }) {
                     <p className="text-blog font-blog font-[500] mb-10 p-4 bg-[#d7fef0] leading-7">
                         {post.foreword}
                     </p>
-                    <div className="text-blog  first-letter:text-[7rem] first-letter:mr-3 first-letter:float-left first-letter:font-[500] font-blog first-letter:leading-none">
-                        <div className="prose max-w-full text-blog" >
+                    <div className=" first-letter:text-[7rem] first-letter:mr-3 first-letter:float-left first-letter:font-[500] font-georgia first-letter:leading-none">
+                        <div className="prose max-w-full text-[20px] font-[400]">
                             {htmlContent.map((item, index) => {
                                 if (typeof item === "string") {
                                     return (
@@ -121,7 +141,9 @@ async function Post({ params }) {
                     topic={post.topic}
                 />
             </div>
-            <div>{/* <Comment /> */}</div>
+            <div id="comment" className="max-w-[80%] m-auto">
+                <CommentSection />
+            </div>
             <div className="fixed bottom-0 flex justify-center sm:justify-between w-full bg-primary p-4 border-t-[1px] border-[#0000001a]">
                 <a
                     href={coffeeLink}

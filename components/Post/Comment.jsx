@@ -1,12 +1,24 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CommentSection } from 'react-comments-section'
 import 'react-comments-section/dist/index.css'
 import { useState } from 'react'
+import { useCookies } from 'react-cookie';
 
 
 
 function Comment() {
+    const [reader, setReader] = useState()
+    const [cookies] = useCookies([]);
+
+    let fetchReader = async () => {
+        let res = await fetch(process.env.NEXT_PUBLIC_BACKEND + "reader/?id=" + cookies["uid"])
+        let reader = await res.json()
+        setReader(reader)
+    }
+    useEffect(() => {
+        fetchReader()
+    }, [])
     const [data] = useState([
         {
             userId: '01a',
@@ -27,18 +39,30 @@ function Comment() {
         }
 
     ])
+    let handleSubmit = (data) => { console.log(data); }
+    let handleReply = (data) => { console.log(data); }
+    let handleDelete = (data) => { console.log(data); }
+    let handleEdit = (data) => { console.log(data); }
+    if (!reader) {
+        return <div></div>
+    }
 
     return <CommentSection
+        onDeleteAction={handleDelete}
+        onEditAction={handleEdit}
+        onReplyAction={handleReply}
+        onSubmitAction={handleSubmit}
+        // removeEmoji={true} 
         currentUser={{
-            currentUserId: '01a',
+            currentUserId: reader.id,
             currentUserImg:
-                'https://ui-avatars.com/api/name=Riya&background=random',
-            currentUserFullName: 'Riya Negi'
+                'https://api.dicebear.com/7.x/adventurer/svg?seed=' + reader.id,
+            currentUserFullName: reader.name
         }}
-        advancedInput={true}
+        // advancedInput={true}
         hrStyle={{ border: '0.5px solid #ff0072' }}
         commentData={data}
-        customImg='https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F13%2F2015%2F04%2F05%2Ffeatured.jpg&q=60'
+        customImg={'https://api.dicebear.com/7.x/adventurer/svg?seed=' + reader.id}
         inputStyle={{ border: '1px solid rgb(208 208 208)' }}
         formStyle={{ backgroundColor: 'white' }}
         submitBtnStyle={{
