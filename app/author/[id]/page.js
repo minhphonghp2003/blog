@@ -63,7 +63,7 @@ async function Author({ params }) {
             <PaginatedPost
                 anchor="works"
                 api="post/all"
-                restParamFetch={{ uuId: params.id, getBy: "author" }}
+                authorId={params.id}
             />
         </div>
     );

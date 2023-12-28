@@ -7,15 +7,15 @@ import { fetchPostPage } from '@utils/network';
 import { extractPostImages } from '@utils/helper';
 
 
-function PaginatedPost({ anchor, api, restParamFetch }) {
+function PaginatedPost({ anchor, api, authorId,readingListId,topicId }) {
     let [currentPage, setCurrentPage] = useState(1)
     let [totalCount, setTotalCount] = useState(0)
-    let [sort,setSort] = useState("updatedAt")
+    let [sort,setSort] = useState("updated_at")
     let [posts, setPosts] = useState(null)
     let siblingCount = 1
     let pageSize = 10
     let fetchPost = async () => {
-        let res = await fetchPostPage({ api, limit: pageSize, page: currentPage - 1, sortBy: sort, restParam: restParamFetch })
+        let res = await fetchPostPage({ api, limit: pageSize, page: currentPage - 1, sortBy: sort,authorId,readingListId,topicId })
         let data = await res.json()
         extractPostImages({ posts: data.content })
         setPosts(data.content)
@@ -42,10 +42,10 @@ function PaginatedPost({ anchor, api, restParamFetch }) {
     return (
         <div className='flex flex-col items-center'>
                 <select onChange={handleSortBy} class="self-start  mb-6 text-horiztitle text-gray">
-                    <option value="updatedAt" selected>Latest</option>
-                    <option value="viewCount">View</option>
-                    <option value="shareCount">Share</option>
-                    <option value="likeCount">Like</option>
+                    <option value="updated_at" selected>Latest update</option>
+                    <option value="view_count">Most view</option>
+                    <option value="share_count">Most share</option>
+                    <option value="like_count">Most like</option>
                 </select>
             <div>
                 {

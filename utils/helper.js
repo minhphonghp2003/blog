@@ -23,3 +23,16 @@ export let extractImageFromProp = ({ list, prop }) => {
         });
     });
 };
+
+export let extractComment = ({ comments }) => {
+    for (let i = 0; i < comments.length; i++) {
+        let comment = comments[i];
+        comment["comId"] = comment["id"];
+        comment["avatarUrl"] =
+            "https://api.dicebear.com/7.x/adventurer/svg?seed=" +
+            comment["userId"];
+        if (comment["replies"]) {
+            extractComment({ comments: comment["replies"] });
+        }
+    }
+};

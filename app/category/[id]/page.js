@@ -12,8 +12,8 @@ async function Topic({ params }) {
         api: "post/all",
         limit: 6,
         page: 0,
-        sortBy: "viewCount",
-        restParam: { id: params.id, getBy: "topic" },
+        sortBy: "view_count",
+        topicId:params.id
     });
 
     let posts = (await res.json()).content;
@@ -31,7 +31,7 @@ async function Topic({ params }) {
                     </Link>
                 )}
                 <PaginatedPost
-                    restParamFetch={{ id: params.id, getBy: "topic" }}
+                    topicId={params.id}
                     api="post/all"
                 />
             </div>

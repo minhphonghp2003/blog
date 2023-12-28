@@ -1,6 +1,3 @@
-import Comment from "@components/Post/Comment";
-import { browserName, BrowserTypes  } from 'react-device-detect';
-import { NextResponse, userAgent } from 'next/server'
 import Header from "@components/Post/Header";
 import Interacting from "@components/Post/Interacting";
 import Related from "@components/Post/Related";
@@ -11,8 +8,6 @@ import { fetchPost } from "@utils/network";
 import { getPostContent } from "@utils/storage";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { headers } from "next/headers";
-import { Editor } from "novel";
 import React from "react";
 import { SiBuymeacoffee } from "react-icons/si";
 const edjsHTML = require("editorjs-html");
@@ -22,23 +17,24 @@ const CommentSection = dynamic(
     () => import("../../../components/Post/Comment"),
     { ssr: false }
 );
-async function Post({ params,request }) {
-    const headersList = headers();
-    const information = {
-        referer: null,
-        userAgent: null,
-        ipAddress: null,
-        location: null,
-        os: null,
-    };
-    // headersList.forEach((v, k) => {
-    //     console.log(k, " = ", v);
-    // });
-    information.referer = headersList.get("referer");
+async function Post({ params }) {
     let res = await fetchPost({ id: params.id });
     let post = await res.json();
-    extractPostImages({ posts: [post] });
+    await fetch(process.env.NEXT_PUBLIC_BACKEND + "post/statistic", {
+        method: "PUT", // *GET, POST, PUT, DELETE, etc.
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            id: params.id,
+            viewCount: post.postStatistic.viewCount + 1,
+            shareCount: post.postStatistic.shareCount,
+        }), // body data type must match "Content-Type" header
+    });
     post.content = await getPostContent({ path: post.postLink });
+    post.content = JSON.parse(post.content);
+    extractPostImages({ posts: [post] });
     extractImageFromProp({ list: [post], prop: "nextImageLink" });
     let coffeeLink = "#";
     post.author.socials.map((s) => {
@@ -46,7 +42,6 @@ async function Post({ params,request }) {
             coffeeLink = s.link;
         }
     });
-    post.content = JSON.parse(post.content);
     const htmlContent = edjsParser.parse(post.content);
 
     return (
@@ -142,7 +137,7 @@ async function Post({ params,request }) {
                 />
             </div>
             <div id="comment" className="max-w-[80%] m-auto">
-                <CommentSection />
+                <CommentSection postId={params.id}/>
             </div>
             <div className="fixed bottom-0 flex justify-center sm:justify-between w-full bg-primary p-4 border-t-[1px] border-[#0000001a]">
                 <a

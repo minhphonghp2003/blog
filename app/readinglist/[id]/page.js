@@ -12,8 +12,8 @@ async function ReadingList({ params }) {
         api: "post/all",
         limit: 6,
         page: 0,
-        sortBy: "viewCount",
-        restParam: { id: params.id, getBy: "readinglist" },
+        sortBy: "view_count",
+        readingListId:params.id
     });
     let posts = (await res.json()).content;
     extractPostImages({ posts });
@@ -30,7 +30,7 @@ async function ReadingList({ params }) {
                     </Link>
                 )}
                 <PaginatedPost
-                    restParamFetch={{ id: params.id, getBy: "readinglist" }}
+                    readingListId={params.id}
                     api="post/all"
                 />
             </div>

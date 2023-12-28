@@ -1,9 +1,19 @@
-export let fetchPostPage = async ({ api, page, limit, sortBy, restParam }) => {
+export let fetchPostPage = async ({
+    api,
+    page,
+    limit,
+    sortBy,
+    readingListId,
+    topicId,
+    authorId,
+}) => {
     let params = {
-        ...restParam,
         page,
         limit,
         sortBy,
+        readingListId,
+        topicId,
+        authorId,
     };
     return await fetch(
         process.env.NEXT_PUBLIC_BACKEND +

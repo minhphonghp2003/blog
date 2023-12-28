@@ -11,14 +11,14 @@ export default async function Home() {
         api: "post/all",
         limit: 6,
         page: 0,
-        sortBy: "updatedAt",
+        sortBy: "updated_at",
     });
     let headingPosts = await heading.json();
     let popular = await fetchPostPage({
         api: "post/all",
         limit: 5,
         page: 0,
-        sortBy: "viewCount",
+        sortBy: "view_count",
     });
     let popularPosts = await popular.json()
     extractPostImages({ posts: headingPosts.content });
