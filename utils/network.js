@@ -11,10 +11,16 @@ export let fetchPostPage = async ({
         page,
         limit,
         sortBy,
-        readingListId,
-        topicId,
-        authorId,
     };
+    if (readingListId != null) {
+        params["readingListid"] = readingListId;
+    }
+    if (topicId != null) {
+        params["topicId"] = topicId;
+    }
+    if (readingListId != null) {
+        params["authorId"] = authorId;
+    }
     return await fetch(
         process.env.NEXT_PUBLIC_BACKEND +
             api +
