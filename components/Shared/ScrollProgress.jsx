@@ -21,9 +21,9 @@ function ScrollProgress() {
         <div className='w-full h-1 opacity-70 fixed z-50 top-0'>
             <div style={{
                 height: "100%",
-                backgroundColor: "#03a87c",
+                backgroundColor: "#D71313",
                 width: `${scrollPercentage}%`,
-                transitionDuration:"700ms"
+                transitionDuration: "700ms"
             }} ></div>
         </div>
     )

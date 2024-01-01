@@ -27,7 +27,7 @@ async function Post({ params }) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            id: params.id,
+            id: post.postStatistic.id,
             viewCount: post.postStatistic.viewCount + 1,
             shareCount: post.postStatistic.shareCount,
         }), // body data type must match "Content-Type" header
@@ -62,7 +62,7 @@ async function Post({ params }) {
                     <p className="text-blog font-blog font-[500] mb-10 p-4 bg-[#d7fef0] leading-7">
                         {post.foreword}
                     </p>
-                    <div className=" first-letter:text-[7rem] first-letter:mr-3 first-letter:float-left first-letter:font-[500] font-georgia first-letter:leading-none">
+                    <div className=" first-letter:text-[7rem] first-letter:mr-3 first-letter:float-left first-letter:font-[500] font-mono first-letter:leading-none">
                         <div className="prose max-w-full text-[20px] font-[400]">
                             {htmlContent.map((item, index) => {
                                 if (typeof item === "string") {

@@ -17,9 +17,10 @@ export default function RootLayout({ children }) {
     return (
         <html>
             <body className="bg-primary text-secondary font-sans antialiased transition-all">
+                
                 <a
                     href="#"
-                    className="hidden sm:flex items-center gap-2  fixed right-[20px] bottom-[100px] text-[15px] text-secondary rotate-90 uppercase"
+                    className="hidden sm:flex items-center gap-2  fixed right-[20px] bottom-[100px] text-[15px] text-secondary hover:text-[#D71313] rotate-90 uppercase"
                 >
                     <FaArrowLeft className="inline " />
                     <span className="[writing-mode: vertical-rl] inline ">

@@ -8,7 +8,7 @@ import { extractComment } from '@utils/helper'
 
 
 
-function Comment({  }) {
+function Comment({ postId }) {
     const [reader, setReader] = useState()
     const [comment, setComment] = useState([])
     const [cookies] = useCookies(["uid"]);
@@ -106,7 +106,7 @@ function Comment({  }) {
                 'https://api.dicebear.com/7.x/adventurer/svg?seed=' + reader.id,
             currentUserFullName: reader.name
         }}
-        hrStyle={{ border: '0.5px solid #ff0072' }}
+        hrStyle={{ border: '0.5px solid #D71313' }}
         commentData={comment}
         customImg={'https://api.dicebear.com/7.x/adventurer/svg?seed=' + reader.id}
         inputStyle={{ border: '1px solid rgb(208 208 208)' }}
