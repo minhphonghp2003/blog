@@ -46,6 +46,7 @@ export async function middleware(req) {
         response.cookies.set("uid", uid, { expires: oneYear + Date.now() });
         return response;
     } catch (error) {
+        alert(res)
         return NextResponse.json(
             { message: "Internal error", error: error.toString() },
             { status: 500 }
