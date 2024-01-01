@@ -3,9 +3,9 @@ export let fetchPostPage = async ({
     page,
     limit,
     sortBy,
-    readingListId,
-    topicId,
-    authorId,
+    readingListId = null,
+    topicId = null,
+    authorId = null,
 }) => {
     let params = {
         page,
