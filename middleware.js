@@ -39,17 +39,13 @@ export async function middleware(req) {
         },
         body: JSON.stringify(reader), // body data type must match "Content-Type" header
     });
+    const response = NextResponse.next();
     try {
         let uid = (await res.json()).id;
-        const response = NextResponse.next();
         const oneYear = 24 * 365 * 60 * 60 * 1000;
         response.cookies.set("uid", uid, { expires: oneYear + Date.now() });
-        return response;
     } catch (error) {
-        alert(res)
-        return NextResponse.json(
-            { message: "Internal error", error: error.toString() },
-            { status: 500 }
-        );
+        alert(res);
     }
+    return response;
 }
