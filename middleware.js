@@ -45,7 +45,7 @@ export async function middleware(req) {
         const oneYear = 24 * 365 * 60 * 60 * 1000;
         response.cookies.set("uid", uid, { expires: oneYear + Date.now() });
     } catch (error) {
-        alert(res);
+    console.log(error);
     }
     return response;
 }
