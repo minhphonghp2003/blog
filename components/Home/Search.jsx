@@ -1,6 +1,13 @@
-import React from 'react'
+"use client"
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
 
 function Search() {
+    let router = useRouter()
+    let [query, setQuery] = useState()
+    let handleSearch = () => {
+        router.push(`/search?query=${query}`)
+    }
     return (
         <div className=" ">
             <div className="relative">
@@ -22,6 +29,14 @@ function Search() {
                     </svg>
                 </div>
                 <input
+                    onChange={(e) => {
+                        setQuery(e.target.value)
+                    }}
+                    onKeyDown={(e) => {
+                        if (e.key == "Enter") {
+                            handleSearch()
+                        }
+                    }}
                     type="search"
                     className="block w-full  ps-10 text-sm text-gray-900 border border-gray rounded-full "
                     placeholder="Type and enter..."
