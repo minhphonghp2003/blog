@@ -7,6 +7,7 @@ import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa6";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import Script from "next/script";
 
 export const metadata = {
     title: "Nguyen Minh Phong",
@@ -17,7 +18,19 @@ export default function RootLayout({ children }) {
     return (
         <html>
             <body className="bg-primary text-secondary font-sans antialiased transition-all">
-                
+                <Script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=G-707V43X5L5"
+                />
+                <Script>
+                    {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', 'G-707V43X5L5');
+                    `}
+                </Script>
                 <a
                     href="#"
                     className="hidden sm:flex items-center gap-2  fixed right-[20px] bottom-[100px] text-[15px] text-secondary hover:text-[#D71313] rotate-90 uppercase"
@@ -41,7 +54,7 @@ export default function RootLayout({ children }) {
                                 href="/contact"
                                 className="text-gray border-[1px]  font-medium rounded-lg text-sm py-[0.3rem] px-[0.7rem]"
                             >
-                               ℹ️ Contact
+                                ℹ️ Contact
                             </Link>
                         </div>
                         <div className="sm:hidden block">
