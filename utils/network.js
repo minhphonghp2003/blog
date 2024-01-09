@@ -19,7 +19,7 @@ export let fetchPostPage = async ({
     if (topicId != null) {
         params["topicId"] = topicId;
     }
-    if (readingListId != null) {
+    if (authorId != null) {
         params["authorId"] = authorId;
     }
     if (query != null) {
