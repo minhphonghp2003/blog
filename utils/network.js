@@ -14,7 +14,7 @@ export let fetchPostPage = async ({
         sortBy,
     };
     if (readingListId != null) {
-        params["readingListid"] = readingListId;
+        params["readingListId"] = readingListId;
     }
     if (topicId != null) {
         params["topicId"] = topicId;
