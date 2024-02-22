@@ -9,7 +9,6 @@ import React, { useEffect, useState } from "react";
 function Search() {
     let searchParams = useSearchParams();
     let query = searchParams.get("query");
-    console.log(query);
 
     return (
         <div className=" gap-8 sm:grid grid-cols-3  max-w-[90vw] sm:max-w-[80vw] m-auto">

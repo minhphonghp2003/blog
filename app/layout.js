@@ -45,8 +45,10 @@ export default function RootLayout({ children }) {
                     className="max-w-[90vw]  sm:max-w-[80vw]  m-auto "
                 >
                     <div className="flex justify-between pt-4">
-                        <div className="font-dm text-[2em] font-semibold">
-                            <a href="/">MPhong</a>
+                        <div className="justify-start ">
+                            <a href="/">
+                                <img src="0.svg" />
+                            </a>
                         </div>
                         <div className="hidden sm:flex z-20  items-center gap-3">
                             <Search />
@@ -67,7 +69,7 @@ export default function RootLayout({ children }) {
                         <Link href="/">Home</Link>
                         <Link href="/#topic">Topics</Link>
                         <Link href="/#rlist">Reading Lists</Link>
-                        <Link href="/contact">✍️Write a post</Link>
+                        <Link href="https://blogdashboard.nguyenminhphong.website/">✍️Write a post</Link>
                     </ul>
                 </nav>
                 <div className="mt-3 ">{children}</div>
