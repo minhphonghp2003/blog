@@ -58,7 +58,7 @@ async function Post({ params }) {
                 <div className="hidden sm:block sticky left-[10vw] self-start top-[3rem]">
                     <Interacting post={post} />
                 </div>
-                <div className="max-w-full m-4 sm:max-w-[53vw] sm:m-auto">
+                <div className="max-w-full m-4 font-sans sm:max-w-[53vw] sm:m-auto">
                     <p className="text-blog font-blog font-[500] mb-10 p-4 bg-[#d7fef0] leading-7">
                         {post.foreword}
                     </p>
