@@ -58,11 +58,11 @@ async function Post({ params }) {
                 <div className="hidden sm:block sticky left-[10vw] self-start top-[3rem]">
                     <Interacting post={post} />
                 </div>
-                <div className="max-w-full m-4 sm:max-w-[65vw] sm:m-auto">
+                <div className="max-w-full m-4 sm:max-w-[53vw] sm:m-auto">
                     <p className="text-blog font-blog font-[500] mb-10 p-4 bg-[#d7fef0] leading-7">
                         {post.foreword}
                     </p>
-                    <div className=" first-letter:text-[7rem] first-letter:mr-3 first-letter:float-left first-letter:font-[500] font-mono first-letter:leading-none">
+                    <div className=" first-letter:text-[7rem] first-letter:mr-3 first-letter:float-left first-letter:font-[500]  first-letter:leading-none">
                         <div className="prose max-w-full text-[20px] font-[400]">
                             {htmlContent.map((item, index) => {
                                 if (typeof item === "string") {
