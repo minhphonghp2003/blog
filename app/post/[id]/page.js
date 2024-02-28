@@ -11,7 +11,25 @@ import dynamic from "next/dynamic";
 import React from "react";
 import { SiBuymeacoffee } from "react-icons/si";
 const edjsHTML = require("editorjs-html");
-const edjsParser = edjsHTML();
+
+function listParser(block) {
+    let lis = "";
+    if (block.data.items) {
+        for (const i of block.data.items) {
+            lis += `<li>${i.content}</li> `;
+        }
+    }
+    console.log(lis);
+    if (block.data.style == "unordered") {
+        return `<ul>
+        ${lis}
+    </ul>`;
+    }
+    return `<ol>
+    ${lis}
+    </ol>`;
+}
+const edjsParser = edjsHTML({ nestedList: listParser });
 
 const CommentSection = dynamic(
     () => import("../../../components/Post/Comment"),
@@ -137,7 +155,7 @@ async function Post({ params }) {
                 />
             </div>
             <div id="comment" className="max-w-[80%] m-auto">
-                <CommentSection postId={params.id}/>
+                <CommentSection postId={params.id} />
             </div>
             <div className="fixed bottom-0 flex justify-center sm:justify-between w-full bg-primary p-4 border-t-[1px] border-[#0000001a]">
                 <a
