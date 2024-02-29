@@ -19,7 +19,6 @@ function listParser(block) {
             lis += `<li>${i.content}</li> `;
         }
     }
-    console.log(lis);
     if (block.data.style == "unordered") {
         return `<ul>
         ${lis}
@@ -81,7 +80,7 @@ async function Post({ params }) {
                         {post.foreword}
                     </p>
                     <div className=" first-letter:text-[7rem] first-letter:mr-3 first-letter:float-left first-letter:font-[500]  first-letter:leading-none">
-                        <div className="prose max-w-full text-[20px] font-[400]">
+                        <div className="prose max-w-full text-[1.4rem] font-[400]">
                             {htmlContent.map((item, index) => {
                                 if (typeof item === "string") {
                                     return (
