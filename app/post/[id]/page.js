@@ -10,6 +10,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import React from "react";
 import { SiBuymeacoffee } from "react-icons/si";
+import PostFooter from "@components/Post/Footer";
 const edjsHTML = require("editorjs-html");
 
 function listParser(block) {
@@ -156,7 +157,8 @@ async function Post({ params }) {
             <div id="comment" className="max-w-[80%] m-auto">
                 <CommentSection postId={params.id} />
             </div>
-            <div className="fixed bottom-0 flex justify-center sm:justify-between w-full bg-primary p-4 border-t-[1px] border-[#0000001a]">
+            <PostFooter coffeeLink={coffeeLink} post={post} />
+            {/* <div className="fixed bottom-0 flex justify-center sm:justify-between w-full bg-primary p-4 border-t-[1px] border-[#0000001a]">
                 <a
                     href={coffeeLink}
                     className="sm:ml-[10vw]  flex items-center bg-[yellow] rounded-lg p-1 font-[cursive]"
@@ -175,7 +177,7 @@ async function Post({ params }) {
                         <p className="inline">{post.nextTitle}</p>
                     </a>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

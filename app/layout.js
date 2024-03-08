@@ -8,6 +8,7 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
+import Nav from "@components/Shared/Nav";
 
 export const metadata = {
     title: "Nguyen Minh Phong",
@@ -64,14 +65,15 @@ export default function RootLayout({ children }) {
                         </div>
                     </div>
                 </header>
-                <nav className="sm:block hidden sm:sticky sm:top-0   max-w-[100vw] bg-primary z-10 px-40 py-4 shadow-[0_1px_0px_0px_rgba(0, 0, 0, 0.05)] ">
+                {/* <nav className="sm:block hidden sm:sticky sm:top-0   max-w-[100vw] bg-primary z-10 px-40 py-4 shadow-[0_1px_0px_0px_rgba(0, 0, 0, 0.05)] ">
                     <ul className="flex justify-between text-gray text-[0.97em] uppercase items-center ">
                         <Link href="/">Home</Link>
                         <Link href="/#topic">Topics</Link>
                         <Link href="/#rlist">Reading Lists</Link>
                         <Link href="https://blogdashboard.nguyenminhphong.website/">✍️Write a post</Link>
                     </ul>
-                </nav>
+                </nav> */}
+                <Nav />
                 <div className="mt-3 ">{children}</div>
                 <SpeedInsights />
                 <Analytics />

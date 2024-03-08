@@ -14,6 +14,7 @@ import {
 
 } from 'next-share'
 import { useCookies } from 'react-cookie';
+import { useScrollDirection } from '@components/CustomHook/useScroll';
 
 
 function Interacting({ post }) {
@@ -23,6 +24,7 @@ function Interacting({ post }) {
     const [like, setLike] = useState(post.likeReader.length)
     const [share, setShare] = useState(post.postStatistic.shareCount)
     const [currentUrl, setCurrentUrl] = useState(null);
+    let scrollDir = useScrollDirection()
     useEffect(() => {
         post.likeReader.map(l => {
             if (l.id == uid) {
@@ -65,7 +67,7 @@ function Interacting({ post }) {
     }
 
     return (
-        <div >
+        <div className={`${scrollDir == "up" ? "" : "hidden"}`}>
             <div className='flex flex-col cursor-pointer items-center'>
                 <p className=' text-gray'>{like}</p>
                 <PiHandsClappingFill onClick={handleLike} className='text-posttitle ' color={isLiked ? "green" : "gray"} />
