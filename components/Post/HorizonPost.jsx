@@ -5,7 +5,7 @@ function HorizonPost({ className, post, isForeword, isBigTitle }) {
   return (
     <Link href={`/post/${post.id}`}>
       <div className={` p-2 rounded-md hover:shadow-xl duration-500 flex  gap-4 ${isBigTitle ? "text-horizbigtitle" : "text-horiztitle"}  mb-4 ${className}`}>
-        <img className=' max-w-[25%] max-h-[25%] rounded-lg object-cover' src={post.imageLink} />
+        <img alt={`${post.title} image`} className=' max-w-[25%] max-h-[25%] rounded-lg object-cover' src={post.imageLink} />
         <div className='grow-5 '>
           <p className=' font-bold mb-1 '>{post.title}</p>
           {

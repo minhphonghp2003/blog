@@ -41,10 +41,15 @@ export async function generateMetadata({ params, searchParams }, parent) {
     // fetch data
     let res = await fetchPost({ id: params.id });
     let post = await res.json();
-
+    let tags =
+        post &&
+        post.tags.map((t) => {
+            return t.name;
+        });
     return {
         title: post.title,
-        description: post.title,
+        description:
+            post.title + " in " + post.topic.name + " " + tags.join(" "),
     };
 }
 async function Post({ params }) {
@@ -81,6 +86,7 @@ async function Post({ params }) {
                 <Header post={post} />
                 <div className="w-full h-[45vw] overflow-hidden mb-8 ">
                     <img
+                        alt={`${post.topic.name} image`}
                         className="w-full m-2 h-[45vw] scale-100 duration-[2000ms] hover:scale-110 hover:opacity-90 overflow-hidden "
                         src={post.imageLink}
                     />
@@ -115,6 +121,7 @@ async function Post({ params }) {
                                 post.tags.map((t) => {
                                     return (
                                         <a
+                                            href={"/search?query=${t.name}"}
                                             key={t}
                                             className="bg-[#0000000d] hover:text-green text-secondary rounded-md text-author px-[3px] py-[6px]"
                                         >
@@ -125,6 +132,7 @@ async function Post({ params }) {
                         </div>
                         <div className="flex sm:flex-row flex-col gap-5 mt-12 justify-center">
                             <img
+                                alt={`${post.topic.name} author`}
                                 src={post.author && post.author.avatar}
                                 className="self-center rounded-full max-w-[120px]"
                             />

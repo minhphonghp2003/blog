@@ -5,7 +5,7 @@ function VerticalPost({ className, post, isForeword }) {
   return (
     <div className={`${className} mb-4  rounded-md`}>
       <Link href={`/post/${post.id}`}>
-        <img className='rounded-lg mb-3 object-cover' src={post.imageLink} />
+        <img alt={`${post.title} image`} className='rounded-lg mb-3 object-cover' src={post.imageLink} />
         <p className='font-bold mb-2 text-verticletitle'> {post.title}</p>
         {
           isForeword && <p className='text-gray text-verticleforeword'>  {post.foreword}...</p>

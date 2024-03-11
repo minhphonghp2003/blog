@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html>
+        <html lang="vi">
             <body className="bg-primary text-secondary font-sans antialiased transition-all">
                 <Script
                     async
@@ -48,7 +48,7 @@ export default function RootLayout({ children }) {
                     <div className="flex justify-between pt-4">
                         <div className="justify-start ">
                             <a href="/">
-                                <img src="0.svg" />
+                                <img alt="phong" src="0.svg" />
                             </a>
                         </div>
                         <div className="hidden sm:flex z-20  items-center gap-3">
