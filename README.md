@@ -5,6 +5,6 @@ https://blogdashboard.nguyenminhphong.fun/ <br>
 > username: phong1234 <br>
 > password: phongadmin <br>
 
-## Dashboard source 
-https://github.com/minhphonghp2003/blogdashboard
+## Dashboard source v2 <br>
 
+https://github.com/minhphonghp2003/blogdashboard-v2
