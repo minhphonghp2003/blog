@@ -1,7 +1,7 @@
 ## Blog website <br>
 https://nguyenminhphong.fun/ <br>
 ## Dashboard website <br>
-https://blogdashboard.nguyenminhphong.fun/ <br>
+https://blogdashboardv2.nguyenminhphong.fun/ <br>
 > username: phong1234 <br>
 > password: phongadmin <br>
 
