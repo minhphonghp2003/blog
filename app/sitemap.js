@@ -2,7 +2,7 @@
 
 import { fetchPost, fetchPostPage } from "@utils/network";
 
-const URL = "https://nguyenminhphong.website";
+const URL = "https://nguyenminhphong.fun";
 
 export default async function sitemap() {
     let allPosts = await (

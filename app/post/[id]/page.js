@@ -80,7 +80,7 @@ async function Post({ params }) {
     post.content = await getPostContent({ path: post.postLink });
     post.content = JSON.parse(post.content);
     extractPostImages({ posts: [post] });
-    extractImageFromProp({ list: [post], prop: "nextImageink" });
+    extractImageFromProp({ list: [post], prop: "nextImageLink" });
     let coffeeLink = "#";
     post.author.socials.map((s) => {
         if (s.name == "BuyMeACoffee") {
