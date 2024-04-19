@@ -1,32 +1,33 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev  -p 8000",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@headlessui/react": "^1.7.17",
-    "@supabase/supabase-js": "^2.39.0",
-    "@tailwindcss/typography": "^0.5.10",
-    "@vercel/analytics": "^1.1.1",
-    "@vercel/speed-insights": "^1.0.1",
-    "autoprefixer": "^10.4.18",
-    "editorjs-html": "^3.4.3",
-    "next": "14.0.1",
-    "next-share": "^0.27.0",
-    "react": "^18",
-    "react-comments-section": "^2.0.10",
-    "react-cookie": "^6.1.1",
-    "react-dom": "^18",
-    "react-icons": "^4.12.0",
-    "sass": "^1.69.5",
-    "uuid": "^9.0.1"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.3.0"
-  }
+    "name": "my-app",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev  -p 8000 ",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.7.17",
+        "@supabase/supabase-js": "^2.39.0",
+        "@tailwindcss/typography": "^0.5.10",
+        "@vercel/analytics": "^1.1.1",
+        "@vercel/speed-insights": "^1.0.1",
+        "autoprefixer": "^10.4.18",
+        "editorjs-html": "^3.4.3",
+        "next": "14.0.1",
+        "next-share": "^0.27.0",
+        "react": "^18",
+        "react-comments-section": "^2.0.10",
+        "react-cookie": "^6.1.1",
+        "react-dom": "^18",
+        "react-icons": "^4.12.0",
+        "sass": "^1.69.5",
+        "terser-webpack-plugin": "^5.3.10",
+        "uuid": "^9.0.1"
+    },
+    "devDependencies": {
+        "tailwindcss": "^3.3.0"
+    }
 }

@@ -41,8 +41,8 @@ function PaginatedPost({ anchor, api, query, authorId, readingListId, topicId })
 
     return (
         <div className='flex flex-col items-center'>
-            <select onChange={handleSortBy} class="self-start  mb-6 text-horiztitle text-gray">
-                <option value="updated_at" selected>Latest update</option>
+            <select defaultValue="updated_at" onChange={handleSortBy} className="self-start  mb-6 text-horiztitle text-gray">
+                <option value="updated_at" >Latest update</option>
                 <option value="view_count">Most view</option>
                 <option value="share_count">Most share</option>
                 <option value="like_count">Most like</option>

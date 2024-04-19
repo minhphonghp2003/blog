@@ -30,7 +30,15 @@ function listParser(block) {
     ${lis}
     </ol>`;
 }
-const edjsParser = edjsHTML({ nestedList: listParser });
+function delimiterParser(block) {
+    return `<div class="text-gray text-center w-full text-5xl">
+    ¯\\_(ツ)_/¯
+    </div> `;
+}
+const edjsParser = edjsHTML({
+    nestedList: listParser,
+    delimiter: delimiterParser,
+});
 
 const CommentSection = dynamic(
     () => import("../../../components/Post/Comment"),
@@ -39,7 +47,9 @@ const CommentSection = dynamic(
 
 export async function generateMetadata({ params, searchParams }, parent) {
     // fetch data
-    let res = await fetchPost({ id: params.id });
+    let res;
+    res = await fetchPost({ id: params.id });
+
     let post = await res.json();
     let tags =
         post &&
@@ -70,7 +80,7 @@ async function Post({ params }) {
     post.content = await getPostContent({ path: post.postLink });
     post.content = JSON.parse(post.content);
     extractPostImages({ posts: [post] });
-    extractImageFromProp({ list: [post], prop: "nextImageLink" });
+    extractImageFromProp({ list: [post], prop: "nextImageink" });
     let coffeeLink = "#";
     post.author.socials.map((s) => {
         if (s.name == "BuyMeACoffee") {
@@ -96,7 +106,7 @@ async function Post({ params }) {
                         <Interacting post={post} />
                     </div>
                     <div className="max-w-full m-4 font-sans sm:max-w-[53vw] sm:m-auto">
-                        <p className="text-blog font-blog font-[500] mb-10 p-4 bg-[#d7fef0] leading-7">
+                        <p className="text-blog text-2xl font-blog font-[500] mb-10 p-4  italic text-gray leading-7">
                             {post.foreword}
                         </p>
                         <div className=" first-letter:text-[7rem] first-letter:mr-3 first-letter:float-left first-letter:font-[500]  first-letter:leading-none">

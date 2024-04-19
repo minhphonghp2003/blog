@@ -20,7 +20,7 @@ export default async function Home() {
         page: 0,
         sortBy: "view_count",
     });
-    let popularPosts = await popular.json()
+    let popularPosts = await popular.json();
     extractPostImages({ posts: headingPosts.content });
     extractPostImages({ posts: popularPosts.content });
     return (

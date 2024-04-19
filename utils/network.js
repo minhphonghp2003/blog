@@ -25,24 +25,26 @@ export let fetchPostPage = async ({
     if (query != null) {
         params["query"] = query;
     }
-    return await fetch(
+    let result = await fetch(
         process.env.NEXT_PUBLIC_BACKEND +
             api +
             "?" +
             new URLSearchParams(params),
         { cache: "no-store" }
     );
+    return result;
 };
 
 export let fetchPost = async ({ id }) => {
     let params = {
         id,
     };
-    return await fetch(
+    let result = await fetch(
         process.env.NEXT_PUBLIC_BACKEND +
-            "post/" +
+            "post/detail" +
             "?" +
             new URLSearchParams(params),
         { cache: "no-store" }
     );
+    return result;
 };

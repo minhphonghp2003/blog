@@ -28,7 +28,7 @@ function Contact() {
                     </p>
                     <p className="my-2">
                         <CgWebsite className="inline" color="green" />{" "}
-                        <a className="" href="https://nguyenminhphong.website/">
+                        <a className="" href="https://nguyenminhphong.fun/">
                             More information click here 👋👋
                         </a>
                     </p>

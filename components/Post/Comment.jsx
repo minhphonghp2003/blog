@@ -14,7 +14,7 @@ function Comment({ postId }) {
     const [cookies] = useCookies(["uid"]);
 
     let fetchReader = async () => {
-        let res = await fetch(process.env.NEXT_PUBLIC_BACKEND + "reader/?id=" + cookies["uid"])
+        let res = await fetch(process.env.NEXT_PUBLIC_BACKEND + "reader/detail?id=" + cookies["uid"])
         let reader = await res.json()
         setReader(reader)
     }

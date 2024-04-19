@@ -11,7 +11,7 @@ function Nav() {
                 <Link href="/">Home</Link>
                 <Link href="/#topic">Topics</Link>
                 <Link href="/#rlist">Reading Lists</Link>
-                <Link href="https://blogdashboard.nguyenminhphong.website/">✍️Write a post</Link>
+                <Link href="https://blogdashboardv2.nguyenminhphong.fun/">✍️Write a post</Link>
             </ul>
         </nav>
     )
