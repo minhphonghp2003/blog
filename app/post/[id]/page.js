@@ -106,7 +106,7 @@ async function Post({ params }) {
                         <Interacting post={post} />
                     </div>
                     <div className="max-w-full m-4 font-sans sm:max-w-[53vw] sm:m-auto">
-                        <p className="text-blog text-2xl font-blog font-[500] mb-10 p-4  italic text-gray leading-7">
+                        <p className="text-blog text-2xl font-blog font-semibold mb-10 p-4  italic text-gray leading-7">
                             {post.foreword}
                         </p>
                         <div className=" first-letter:text-[7rem] first-letter:mr-3 first-letter:float-left first-letter:font-[500]  first-letter:leading-none">

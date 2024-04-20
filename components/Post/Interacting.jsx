@@ -58,7 +58,7 @@ function Interacting({ post }) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                id: post.id,
+                id: post.postStatistic.id,
                 viewCount: post.viewCount,
                 shareCount: share + 1,
             }), // body data type must match "Content-Type" header
@@ -67,7 +67,7 @@ function Interacting({ post }) {
     }
 
     return (
-        <div className={`${scrollDir == "up" ? "" : "hidden"}`}>
+        <div className={`${scrollDir == "up" ? "" : "invisible"}`}>
             <div className='flex flex-col cursor-pointer items-center'>
                 <p className=' text-gray'>{like}</p>
                 <PiHandsClappingFill onClick={handleLike} className='text-posttitle ' color={isLiked ? "green" : "gray"} />
