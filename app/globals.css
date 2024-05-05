@@ -7,7 +7,10 @@ html {
   scroll-behavior: smooth !important;
 
 }
-
+.ce-block__content, 
+.ce-toolbar__content {
+ max-width: 100%;  /* example value, adjust for your own use case */
+}
 @font-face {
   font-family: 'DmSerifText';
   src: url('/DMSerifText-Regular.ttf') format('truetype');

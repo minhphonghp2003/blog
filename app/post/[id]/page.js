@@ -11,6 +11,7 @@ import dynamic from "next/dynamic";
 import React from "react";
 import { SiBuymeacoffee } from "react-icons/si";
 import PostFooter from "@components/Post/Footer";
+import Editor from "@components/Post/Editor";
 
 const edjsHTML = require("editorjs-html");
 
@@ -30,6 +31,7 @@ function listParser(block) {
     ${lis}
     </ol>`;
 }
+
 function delimiterParser(block) {
     return `<div class="text-gray text-center w-full text-5xl">
     ¯\\_(ツ)_/¯
@@ -88,6 +90,9 @@ async function Post({ params }) {
         }
     });
     const htmlContent = edjsParser.parse(post.content);
+    // const blockHTML = edjsParser.parseBlock(post.content);
+    // // returns string of html for this block
+    // console.log(blockHTML);
 
     return (
         <>
@@ -124,6 +129,7 @@ async function Post({ params }) {
                                     }
                                     return item;
                                 })}
+                                {/* <Editor data={post.content} /> */}
                             </div>
                         </div>
                         <div className="flex flex-wrap gap-2 mt-14">
